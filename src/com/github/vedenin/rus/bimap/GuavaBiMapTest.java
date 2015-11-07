@@ -3,6 +3,7 @@ package com.github.vedenin.rus.bimap;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 
+//  Attention: version with english comments in "eng" package
 public class GuavaBiMapTest {
 
     // Задача даны массивы польского-английского перевода,сделать коллекцию для перевода слова в двух напрявлениях

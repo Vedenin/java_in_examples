@@ -8,6 +8,7 @@ import com.gs.collections.impl.multimap.list.FastListMultimap;
 import java.util.Arrays;
 import java.util.List;
 
+//  Attention: version with english comments in "eng" package
 public class GsHashBagMultimapTest {
 
     // Задача вывести разобрать текст и вывести все индексы для каждого слова

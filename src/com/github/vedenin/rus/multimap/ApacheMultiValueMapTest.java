@@ -6,6 +6,7 @@ import org.apache.commons.collections4.map.MultiValueMap;
 import java.util.Arrays;
 import java.util.List;
 
+//  Attention: version with english comments in "eng" package
 public class ApacheMultiValueMapTest {
 
     // Задача вывести разобрать текст и вывести все индексы для каждого слова

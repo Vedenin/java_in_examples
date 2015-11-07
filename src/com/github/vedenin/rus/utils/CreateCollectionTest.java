@@ -12,6 +12,8 @@ import com.gs.collections.impl.set.mutable.UnifiedSet;
 import java.util.*;
 
 /**
+ *  Attention: version with english comments in "eng" package
+ *
  * Пример создания коллекций разными библиотеками
  *
  * Created by vedenin on 17.10.15.

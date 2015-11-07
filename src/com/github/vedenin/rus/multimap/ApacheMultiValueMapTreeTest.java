@@ -5,6 +5,7 @@ import org.apache.commons.collections4.map.MultiValueMap;
 
 import java.util.*;
 
+//  Attention: version with english comments in "eng" package
 public class ApacheMultiValueMapTreeTest {
 
     // Задача вывести разобрать текст и вывести все индексы для каждого слова

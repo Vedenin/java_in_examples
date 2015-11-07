@@ -4,6 +4,7 @@ package com.github.vedenin.rus.bimap;
 import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 
+//  Attention: version with english comments in "eng" package
 public class ApacheBidiMapTest {
 
     // Задача даны массивы польского-английского перевода, сделать коллекцию для перевода слова в двух напрявлениях

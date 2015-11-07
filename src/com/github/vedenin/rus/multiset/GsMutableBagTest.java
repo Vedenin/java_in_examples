@@ -5,6 +5,7 @@ import com.gs.collections.impl.bag.mutable.HashBag;
 
 import java.util.Arrays;
 
+//  Attention: version with english comments in "eng" package
 public class GsMutableBagTest {
 
     public static void main(String[] args) {

@@ -6,6 +6,7 @@ import com.google.common.collect.HashBiMap;
 import java.util.HashMap;
 import java.util.Map;
 
+//  Attention: version with english comments in "eng" package
 public class JDKBiMapTest {
 
     // Задача даны массивы польского-английского перевода, сделать коллекцию для перевода слова в двух напрявлениях

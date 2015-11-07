@@ -2,6 +2,7 @@ package com.github.vedenin.rus.multiset;
 
 import java.util.*;
 
+//  Attention: version with english comments in "eng" package
 public class JDKMultisetTest {
 
     public static void main(String[] args) {

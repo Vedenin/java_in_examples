@@ -6,6 +6,7 @@ import com.google.common.collect.TreeMultimap;
 import java.util.Arrays;
 import java.util.List;
 
+//  Attention: version with english comments in "eng" package
 public class GuavaTreeMultimapTest {
 
     // Задача вывести разобрать текст и вывести все индексы для каждого слова

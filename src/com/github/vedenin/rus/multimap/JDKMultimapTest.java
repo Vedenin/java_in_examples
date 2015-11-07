@@ -2,11 +2,8 @@ package com.github.vedenin.rus.multimap;
 
 import java.util.*;
 
+//  Attention: version with english comments in "eng" package
 public class JDKMultimapTest {
-
-
-
-
     // Задача вывести разобрать текст и вывести все индексы для каждого слова
     public static void main(String[] args) {
         final int LIST_INDEXES_CAPACITY = 50;

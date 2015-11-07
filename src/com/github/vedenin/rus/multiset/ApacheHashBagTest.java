@@ -5,6 +5,7 @@ import org.apache.commons.collections4.bag.HashBag;
 
 import java.util.Arrays;
 
+//  Attention: version with english comments in "eng" package
 public class ApacheHashBagTest {
 
     public static void main(String[] args) {

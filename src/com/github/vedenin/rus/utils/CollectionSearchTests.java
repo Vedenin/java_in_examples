@@ -13,6 +13,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
+ *  Attention: version with english comments in "eng" package
+ *
  * Тестирование методов поиска в коллекциях от guava, apache, jdk, gs
  *
  * Created by vedenin on 17 .10.15.

@@ -15,6 +15,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ *  Attention: version with english comments in "eng" package
+ *
  * Created by vedenin on 23.10.15.
  */
 public class CollectionCompareTests {

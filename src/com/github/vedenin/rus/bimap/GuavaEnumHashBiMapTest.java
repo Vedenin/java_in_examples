@@ -4,6 +4,7 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.EnumBiMap;
 import com.google.common.collect.EnumHashBiMap;
 
+//  Attention: version with english comments in "eng" package
 public class GuavaEnumHashBiMapTest {
     enum ENGLISH_WORD {
         ONE, TWO, THREE, BALL, SNOW

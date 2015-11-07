@@ -4,6 +4,7 @@ package com.github.vedenin.rus.bimap;
 import com.gs.collections.api.bimap.MutableBiMap;
 import com.gs.collections.impl.bimap.mutable.HashBiMap;
 
+//  Attention: version with english comments in "eng" package
 public class GsHashBiMapTest {
 
     // Задача даны массивы польского-английского перевода, сделать коллекцию для перевода слова в двух напрявлениях

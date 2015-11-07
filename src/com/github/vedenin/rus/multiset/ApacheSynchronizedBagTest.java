@@ -6,6 +6,7 @@ import org.apache.commons.collections4.bag.SynchronizedBag;
 
 import java.util.Arrays;
 
+//  Attention: version with english comments in "eng" package
 public class ApacheSynchronizedBagTest {
 
     public static void main(String[] args) {

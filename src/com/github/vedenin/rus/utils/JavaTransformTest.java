@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
+ * Attention: version with english comments in "eng" package
+ *
  * Created by vvedenin on 10/27/2015.
  */
 public class JavaTransformTest {
