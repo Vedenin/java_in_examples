@@ -1,5 +1,8 @@
 ## java Collections and Stream Api in Examples 
 
+- [I. Stream API](#i-stream-api)
+- [1. All way to create Stream in Java 8](#1-all-way-to-create-stream-in-java-8)
+  
 #### I. Stream API
 
 ###### 1. All way to create Stream in Java 8
