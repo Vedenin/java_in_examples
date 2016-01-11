@@ -6,45 +6,43 @@ import java.util.Objects;
 
 /**
  *
- * Примеры работы методов Stream Api
+ * Max and min examples of Stream Api
  *
  * Created by vedenin on 17 .10.15.
  */
 public class MaxMinTests {
 
-    // Метод max вернет максимальный элемент, в качестве условия использует компаратор
-    // Метод min вернет минимальный элемент, в качестве условия использует компаратор
     private static void testMinMax() {
         System.out.println();
         System.out.println("Test min and max start");
         // ************ Work with strings
         Collection<String> collection = Arrays.asList("a1", "a2", "a3", "a1");
 
-        // найти максимальное значение
+        // find max value
         String max = collection.stream().max(String::compareTo).get();
         System.out.println("max " + max); // print  a3
 
-        // найти минимальное значение
+        // find min value
         String min = collection.stream().min(String::compareTo).get();
         System.out.println("min " + min); // print  a1
 
-        // ************ Работа со сложными объектами
+        // ************ Work with objects
 
-        // Зададим коллекцию людей
+        // Init collection of People
         Collection<People> peoples = Arrays.asList(
-                new People("Вася", 16, Sex.MAN),
-                new People("Петя", 23, Sex.MAN),
-                new People("Елена", 42, Sex.WOMEN),
-                new People("Иван Иванович", 69, Sex.MAN)
+                new People("Vasja", 16, Sex.MAN),
+                new People("Petja", 23, Sex.MAN),
+                new People("Elena", 42, Sex.WOMEN),
+                new People("Ivan", 69, Sex.MAN)
         );
 
-        // найти человека с максимальным возрастом
+        // Find people with minimum age
         People older = peoples.stream().max((p1, p2) -> p1.getAge().compareTo(p2.getAge())).get();
-        System.out.println("older " + older); // print  {name='Иван Иванович', age=69, sex=MAN}
+        System.out.println("older " + older); // print  {name='Ivan', age=69, sex=MAN}
 
-        // найти человека с минимальным возрастом
+        // Find people with maximum age
         People younger = peoples.stream().min((p1, p2) -> p1.getAge().compareTo(p2.getAge())).get();
-        System.out.println("younger " + younger); // print  {name='Вася', age=16, sex=MAN}
+        System.out.println("younger " + younger); // print  {name='Vasja', age=16, sex=MAN}
     }
 
 

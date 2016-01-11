@@ -65,22 +65,22 @@ public class CollectAndToArrayTests {
         Map<String, String> groupJoin = strings.stream().collect(Collectors.groupingBy((p) -> p.substring(0, 1), Collectors.mapping((p) -> p.substring(1, 2), Collectors.joining(":"))));
         System.out.println("groupJoin = " + groupJoin); // print  groupJoin = groupJoin = {a=1/1, b=2, c=3}
 
-        // Create custom Collector, который будет выполнять объединение строк с помощью StringBuilder
+        // Create custom Collector, that join string using StringBuilder
         Collector<String,StringBuilder, String> stringBuilderCollector =  Collector.of(
-                StringBuilder::new, // метод инициализации аккумулятора
-                (b ,s) -> b.append(s).append(" , "), // метод обработки каждого элемента
-                (b1, b2) -> b1.append(b2).append(" , "), // метод соединения двух аккумуляторов при параллельном выполнении
-                StringBuilder::toString // метод выполняющися в самом конце
+                StringBuilder::new, // method accumulator's initialization
+                (b ,s) -> b.append(s).append(" , "), // method that working with every element
+                (b1, b2) -> b1.append(b2).append(" , "), // method that join to accumulator's
+                StringBuilder::toString // method that finished working
         );
         String joinBuilder = strings.stream().collect(stringBuilderCollector);
         System.out.println("joinBuilder = " + joinBuilder); // print  joinBuilder = a1 , b2 , c3 , a1 ,
 
         // Analog Collector using JDK7-
-        StringBuilder b = new StringBuilder(); // метод инициализации аккумулятора
+        StringBuilder b = new StringBuilder(); // method accumulator's initialization
         for(String s: strings) {
-            b.append(s).append(" , "); // метод обработки каждого элемента
+            b.append(s).append(" , "); // method that working with every element
         }
-        String joinBuilderOld = b.toString(); // метод выполняющися в самом конце
+        String joinBuilderOld = b.toString(); // method that finished working
         System.out.println("joinBuilderOld = " + joinBuilderOld); // print  joinBuilderOld = a1 , b2 , c3 , a1 ,
     }
 

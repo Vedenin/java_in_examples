@@ -7,18 +7,17 @@ import java.util.stream.Collectors;
 
 /**
  *
- * Примеры работы методов Stream Api
+ * ForEach and Peak example of Stream Api
  *
  * Created by vedenin on 17 .10.15.
  */
 public class ForEachAndPeekTests {
 
-    // Метод ForEach применяет указанный метод к каждому элементу стрима и заканчивает работу со стримом
     private static void testForEach() {
         System.out.println();
         System.out.println("For each start");
         Collection<String> collection = Arrays.asList("a1", "a2", "a3", "a1");
-        // Напечатать отладочную информацию по каждому элементу стрима
+        // Print debug information for every element
         System.out.print("forEach = ");
         collection.stream().map(String::toUpperCase).forEach((e) -> System.out.print(e + ",")); // print  forEach = A1,A2,A3,A1,
         System.out.println();
@@ -28,12 +27,11 @@ public class ForEachAndPeekTests {
         System.out.println("forEachOrdered = " + list); // print  forEachOrdered = [a1_new, a2_new, a3_new]
     }
 
-    // Метод Peek возвращает тот же стрим, но при этом применяет указанный метод к каждому элементу стрима
     private static void testPeek() {
         System.out.println();
         System.out.println("Test peek start");
         Collection<String> collection = Arrays.asList("a1", "a2", "a3", "a1");
-        // Напечатать отладочную информацию по каждому элементу стрима
+        // Print debug information for every element
         System.out.print("peak1 = ");
         List<String> peek = collection.stream().map(String::toUpperCase).peek((e) -> System.out.print(e + ",")).
                 collect(Collectors.toList());

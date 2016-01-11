@@ -8,13 +8,12 @@ import java.util.stream.Collectors;
 
 /**
  *
- * Примеры работы методов Stream Api
+ * sort example of Stream Api
  *
  * Created by vedenin on 17 .10.15.
  */
 public class SortedTests {
 
-    // Метод Sorted позволяет сортировать значения либо в натуральном порядке, либо задавая Comparator
     private static void testSorted() {
         System.out.println();
         System.out.println("Test sorted start");
@@ -22,39 +21,40 @@ public class SortedTests {
         // ************ Work with strings
         Collection<String> collection = Arrays.asList("a1", "a4", "a3", "a2", "a1", "a4");
 
-        // отсортировать значения по алфавиту
+        // sort by alphabet
         List<String> sorted = collection.stream().sorted().collect(Collectors.toList());
         System.out.println("sorted = " + sorted); // print  sorted = [a1, a1, a2, a3, a4, a4]
 
-        // отсортировать значения по алфавиту и убрать дубликаты
+        // sort by alphabet without duplicate
         List<String> sortedDistinct = collection.stream().sorted().distinct().collect(Collectors.toList());
         System.out.println("sortedDistinct = " + sortedDistinct); // print  sortedDistinct = [a1, a2, a3, a4]
 
-        // отсортировать значения по алфавиту в обратном порядке
+        // sort by alphabet in reverse order
         List<String> sortedReverse = collection.stream().sorted((o1, o2) -> -o1.compareTo(o2)).collect(Collectors.toList());
         System.out.println("sortedReverse = " + sortedReverse); // print  sortedReverse = [a4, a4, a3, a2, a1, a1]
 
-        // отсортировать значения по алфавиту в обратном порядке  и убрать дубликаты
+        // sort by alphabet in reverse order without duplicate
         List<String> distinctReverse = collection.stream().sorted((o1, o2) -> -o1.compareTo(o2)).distinct().collect(Collectors.toList());
         System.out.println("distinctReverse = " + distinctReverse); // print  sortedReverse = [a4, a3, a2, a1]
 
-        // ************ Работа с объектами
-        // Зададим коллекцию людей
+        // ************ Working with objects
+
+        // Init collection of People
         Collection<People> peoples = Arrays.asList(
-                new People("Вася", 16, Sex.MAN),
-                new People("Петя", 23, Sex.MAN),
-                new People("Елена", 42, Sex.WOMEN),
-                new People("Иван Иванович", 69, Sex.MAN)
+                new People("Vasja", 16, Sex.MAN),
+                new People("Petja", 23, Sex.MAN),
+                new People("Elena", 42, Sex.WOMEN),
+                new People("Ivan", 69, Sex.MAN)
         );
 
-        // Отсортировать по имени в обратном алфавитном порядке
+        // sort by alphabet by name in reverse order
         Collection<People> byName = peoples.stream().sorted((o1,o2) -> -o1.getName().compareTo(o2.getName())).collect(Collectors.toList());
-        System.out.println("byName = " + byName); // byName = [{name='Петя', age=23, sex=MAN}, {name='Иван Иванович', age=69, sex=MAN}, {name='Елена', age=42, sex=WOMEN}, {name='Вася', age=16, sex=MAN}]
+        System.out.println("byName = " + byName); // byName = [{name='Petja', age=23, sex=MAN}, {name='Ivan', age=69, sex=MAN}, {name='Elena', age=42, sex=WOMEN}, {name='Vasja', age=16, sex=MAN}]
 
-        // Отсортировать сначала по полу, а потом по возрасту
+        // sort by sex and (later) by age
         Collection<People> bySexAndAge = peoples.stream().sorted((o1, o2) -> o1.getSex() != o2.getSex() ? o1.getSex().
                 compareTo(o2.getSex()) : o1.getAge().compareTo(o2.getAge())).collect(Collectors.toList());
-        System.out.println("bySexAndAge = " + bySexAndAge); // bySexAndAge = [{name='Вася', age=16, sex=MAN}, {name='Петя', age=23, sex=MAN}, {name='Иван Иванович', age=69, sex=MAN}, {name='Елена', age=42, sex=WOMEN}]
+        System.out.println("bySexAndAge = " + bySexAndAge); // bySexAndAge = [{name='Vasja', age=16, sex=MAN}, {name='Petja', age=23, sex=MAN}, {name='Ivan', age=69, sex=MAN}, {name='Elena', age=42, sex=WOMEN}]
     }
 
     private enum Sex {
