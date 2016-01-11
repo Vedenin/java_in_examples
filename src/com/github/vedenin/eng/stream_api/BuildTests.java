@@ -3,6 +3,7 @@ package com.github.vedenin.eng.stream_api;
 import java.io.File;
 import java.io.PrintWriter;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collection;
@@ -77,6 +78,19 @@ public class BuildTests {
         // Create parallel Stream from collection
         Stream<String> parallelStream = collection.parallelStream();
         System.out.println("parallelStream = " + parallelStream.collect(Collectors.toList())); // print  parallelStream = [a1, a2, a3]
+
+        // Create stream from path
+        Stream<Path> streamFromPath = Files.list(Paths.get(""));
+        System.out.println("streamFromPath = " + streamFromPath.collect(Collectors.toList())); // print list of files
+
+        // Create stream from finding files
+        Stream<Path> streamFromFind = Files.find(Paths.get(""), 10, (p,a) -> true);
+        System.out.println("streamFromFind = " + streamFromFind.collect(Collectors.toList())); // print list of files
+
+        // Create stream from files tree
+        Stream<Path> streamFromFileTree = Files.walk(Paths.get(""));
+        System.out.println("streamFromFileTree = " + streamFromFileTree.collect(Collectors.toList())); // print list of files
+
     }
 
     public static void main(String[] args)  throws Exception {
