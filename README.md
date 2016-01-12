@@ -9,7 +9,7 @@
 
 Way to create stream	 | 	Template	 | 	Example
 -------------	 | 	-------------	 | 	-------------
-1. Clasic: Create stream from collection	 | 	collection.stream()	 | 	 Collection<String> collection = Arrays.asList("a1", "a2", "a3");  <br/>     Stream<String> streamFromCollection = collection.stream();
+1. Classic: Create stream from collection	 | 	collection.stream()	 | 	 Collection<String> collection = Arrays.asList("a1", "a2", "a3");  <br/>     Stream<String> streamFromCollection = collection.stream();
 2. Create stream from values	 | 	Stream.of(value1,… ,valueN)	 | 	Stream<String> streamFromValues = Stream.of("a1", "a2", "a3");
 3. Create stream from array	 | 	Arrays.stream(array)	 | 	String[] array = {"a1","a2","a3"};   <br/>         Stream<String> streamFromArrays = Arrays.stream(array);        
 3. Create stream from part of array	 | 	Arrays.stream(array, start, end)	 | 	String[] array = {"a1","a2","a3"};<br/>              Stream<String> streamFromArrays = Arrays.stream(array, 1, 2);        
@@ -28,6 +28,7 @@ Way to create stream	 | 	Template	 | 	Example
 15. Create stream from iterable	 | 	StreamSupport.stream(iterable.spliterator(), false) | 	…
 16. Create infinive stream from iterator	 | 	Stream.generate(iterator::next) | 	…
 17. Create empty stream  | 	Stream.empty() |  Stream<String> streamEmpty = Stream.empty();
-
+18. Create stream from Pattern  | 	Pattern.compile(reg_exp).splitAsStream(string) |  Stream<String> streamFromPattern = Pattern.compile(":").splitAsStream("a1:a2:a3");
+19. Create stream from BufferedReader  | 	bufferedReader.lines() |  Stream<String> streamFromBufferedReader = bufferedReader.lines();
 
 More examples [this](https://github.com/Vedenin/java_in_examples/blob/master/src/com/github/vedenin/eng/stream_api/BuildTests.java)
