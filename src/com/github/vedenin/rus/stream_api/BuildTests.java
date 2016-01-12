@@ -1,11 +1,15 @@
 package com.github.vedenin.rus.stream_api;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -77,6 +81,32 @@ public class BuildTests {
         // Создать параллельный стрим из коллекции
         Stream<String> parallelStream = collection.parallelStream();
         System.out.println("parallelStream = " + parallelStream.collect(Collectors.toList())); // напечатает parallelStream = [a1, a2, a3]
+
+        // Создать стрим из списка файлов по определенному пути
+        Stream<Path> streamFromPath = Files.list(Paths.get(""));
+        System.out.println("streamFromPath = " + streamFromPath.collect(Collectors.toList())); // print list of files
+
+        // Создать стрим из найденных файлов
+        Stream<Path> streamFromFind = Files.find(Paths.get(""), 10, (p,a) -> true);
+        System.out.println("streamFromFind = " + streamFromFind.collect(Collectors.toList())); // print list of files
+
+        // Создать стрим из дерева файлов
+        Stream<Path> streamFromFileTree = Files.walk(Paths.get(""));
+        System.out.println("streamFromFileTree = " + streamFromFileTree.collect(Collectors.toList())); // print list of files
+
+        // Создать стрим из RegExp pattern'a
+        Stream<String> streamFromPattern = Pattern.compile(":")
+                .splitAsStream("a1:a2:a3");
+        System.out.println("streamFromPattern = " + streamFromPattern.collect(Collectors.joining(","))); // print a1,a2,a3
+
+        // Создать стрим из текстового файла используя BufferedReader
+        Path path = Files.write(Paths.get("./test.txt"), "test 1\ntest 2".getBytes()); // create temp file
+
+        try (BufferedReader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
+            Stream<String> streamFromBufferedReader = reader.lines();
+            System.out.println("streamFromBufferedReader = " + streamFromBufferedReader.collect(Collectors.toList())); // print [test 1, test 2]
+        }
+
     }
 
     public static void main(String[] args)  throws Exception {
