@@ -5,7 +5,7 @@
     <packaging>pom</packaging>
 
     <groupId>com.github.vedenin</groupId>
-    <artifactId>java-in-examples</artifactId>
+    <artifactId>stream-api-in-examples</artifactId>
     <version>0.01</version>
 
     <dependencies>
@@ -23,30 +23,6 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.goldmansachs</groupId>
-            <artifactId>gs-collections-api</artifactId>
-            <version>6.2.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.goldmansachs</groupId>
-            <artifactId>gs-collections</artifactId>
-            <version>6.2.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.goldmansachs</groupId>
-            <artifactId>gs-collections-testutils</artifactId>
-            <version>6.2.0</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.goldmansachs</groupId>
-            <artifactId>gs-collections-forkjoin</artifactId>
-            <version>6.2.0</version>
         </dependency>
     </dependencies>
 </project>
