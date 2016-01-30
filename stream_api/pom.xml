@@ -7,6 +7,7 @@
     <groupId>com.github.vedenin</groupId>
     <artifactId>stream-api-in-examples</artifactId>
     <version>0.01</version>
+    <name>Java In Examples :: Stream Api</name>
 
     <dependencies>
         <dependency>

@@ -7,6 +7,7 @@
     <groupId>com.github.vedenin</groupId>
     <artifactId>java-in-examples</artifactId>
     <version>0.01</version>
+    <name>Java In Examples :: Main</name>
 
     <dependencies>
         <dependency>
@@ -49,4 +50,19 @@
             <version>6.2.0</version>
         </dependency>
     </dependencies>
+
+    <modules>
+        <module>
+            html_parser
+        </module>
+        <module>
+            stream_api
+        </module>
+        <module>
+            collections
+        </module>
+        <module>
+            dependency_injection
+        </module>
+    </modules>
 </project>
