@@ -13,7 +13,7 @@ import org.apache.commons.io.input.ReaderInputStream;
 /**
  * Created by vedenin on 15.01.16.
  */
-public class IOTest {
+public class ConvertStringAndInputStreamTest {
     public static void main(String[] s) throws Exception {
         convertStringToOrFromInputStream();
     }
