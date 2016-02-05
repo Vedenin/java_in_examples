@@ -7,6 +7,7 @@
     <groupId>com.github.vedenin</groupId>
     <artifactId>other-examples</artifactId>
     <version>0.01</version>
+    <name>Java In Examples :: Other</name>
 
     <dependencies>
         <dependency>
@@ -23,6 +24,21 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>4.2.4.RELEASE</version>
         </dependency>
     </dependencies>
 </project>
