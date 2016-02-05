@@ -33,3 +33,5 @@ Way to create stream	 | 	Template	 | 	Example
 20. Create stream from Enum  | 	EnumSet.allOf(MyEnum.class).stream() | Stream<MyEnum> streamFromEnum = EnumSet.allOf(MyEnum.class).stream();
 
 More examples [this](https://github.com/Vedenin/java_in_examples/blob/master/src/com/github/vedenin/eng/stream_api/BuildTests.java)
+
+#### II.
