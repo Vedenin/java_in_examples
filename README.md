@@ -34,4 +34,3 @@ Way to create stream	 | 	Template	 | 	Example
 
 More examples [this](https://github.com/Vedenin/java_in_examples/blob/master/src/com/github/vedenin/eng/stream_api/BuildTests.java)
 
-#### II.
