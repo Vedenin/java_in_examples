@@ -65,5 +65,6 @@
             dependency_injection
         </module>
         <module>natural-language-processing</module>
+        <module>other</module>
     </modules>
 </project>
