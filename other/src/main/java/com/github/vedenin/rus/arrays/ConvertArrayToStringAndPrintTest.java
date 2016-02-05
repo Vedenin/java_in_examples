@@ -1,4 +1,4 @@
-package com.github.vedenin.eng.string_and_stream;
+package com.github.vedenin.rus.arrays;
 
 import java.util.Arrays;
 import java.util.stream.DoubleStream;

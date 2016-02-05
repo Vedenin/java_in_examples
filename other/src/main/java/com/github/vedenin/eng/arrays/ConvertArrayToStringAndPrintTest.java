@@ -1,4 +1,4 @@
-package com.github.vedenin.eng.other;
+package com.github.vedenin.eng.arrays;
 
 import java.util.Arrays;
 import java.util.stream.DoubleStream;
@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 /**
  * Created by vedenin on 04.02.16.
  */
-public class PrintArrayTest {
+public class ConvertArrayToStringAndPrintTest {
     public static void main(String[] s) throws Exception {
 
 /* (JDK 5) Using Arrays.toString or Arrays.deepToString */
