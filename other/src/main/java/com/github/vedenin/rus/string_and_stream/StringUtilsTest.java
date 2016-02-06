@@ -72,7 +72,7 @@ public class StringUtilsTest {
         long java8 = testString.chars().filter(ch -> ch =='.').count();
         System.out.println("java8 = " + java8);
 
-        // Используя Java8 (case 2)
+        // Используя Java8 (case 2), may be better for unicode then case 1
         long java8Case2 = testString.codePoints().filter(ch -> ch =='.').count();
         System.out.println("java8 (second case) = " + java8Case2);
 
