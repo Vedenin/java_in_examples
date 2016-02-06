@@ -2,14 +2,14 @@
 
 You can find following code examples:
 - I. Compare collections in Apache, Guava and Gs Collection:
--   1. BiMap collection in Apache, Guava and JDK analog
--   2. MultiMap collection in Apache, Guava, Gs Collection and JDK analog
--   3. Multiset collection in Apache, Guava, Gs Collection and JDK analog
+&nbsp;&nbsp;- 1. BiMap collection in Apache, Guava and JDK analog
+&nbsp;&nbsp;-   2. MultiMap collection in Apache, Guava, Gs Collection and JDK analog
+&nbsp;&nbsp;-   3. Multiset collection in Apache, Guava, Gs Collection and JDK analog
 - II. Compare operations with collections in Apache, Guava, Gs Collection and JDK:
-- 1. Operations for comparison collections (containsAll, containsAny, intersect, difference, symmetric difference, union)
-- 2. Operations for searching in collections (count, getFirst, getLast, getSingle, getMax, getMin, binarySearch, search, getByIndex, select)
-- 3. Create collections (ArrayList, HashSet, HashMap)
-- 4. Transform collections (sort, remove, retain, transform, changeAll)
+&nbsp;&nbsp;- 1. Operations for comparison collections (containsAll, containsAny, intersect, difference, symmetric difference, union)
+&nbsp;&nbsp;- 2. Operations for searching in collections (count, getFirst, getLast, getSingle, getMax, getMin, binarySearch, search, getByIndex, select)
+&nbsp;&nbsp;- 3. Create collections (ArrayList, HashSet, HashMap)
+&nbsp;&nbsp;- 4. Transform collections (sort, remove, retain, transform, changeAll)
 
 ### java Collections and Stream Api in Examples
 
