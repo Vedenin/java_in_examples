@@ -13,19 +13,19 @@ import java.util.StringTokenizer;
 public class StringUtilsTest {
     private static void isEmptyTest() {
         String emptyString = "";
-        // Using isEmpty from JDK
+        // Используя isEmpty from JDK
         boolean jdkIsEmpty = emptyString != null && emptyString.isEmpty();
         System.out.println("JDK isEmpty = " + jdkIsEmpty);
 
-        // Using equals from JDK
+        // Используя equals from JDK
         boolean jdkEquals = emptyString != null && emptyString.isEmpty();
         System.out.println("JDK equals = " + jdkEquals);
 
-        // Using isEmpty from Apache Commons
+        // Используя isEmpty from Apache Commons
         boolean apacheIsEmpty = StringUtils.isEmpty(emptyString);
         System.out.println("Apache isEmpty = " + apacheIsEmpty);
 
-        // Using isNullOrEmpty from Guava
+        // Используя isNullOrEmpty from Guava
         boolean guavaIsNullOrEmpty = Strings.isNullOrEmpty(emptyString);
         System.out.println("Guava isNullOrEmpty = " + guavaIsNullOrEmpty);
     }
@@ -33,50 +33,50 @@ public class StringUtilsTest {
     private static void isBlankTest() {
         String emptyString = "   ";
 
-        // Using isBlank from Apache Commons
+        // Используя isBlank from Apache Commons
         boolean apache = StringUtils.isBlank(emptyString);
         System.out.println("isBlank of Apache = " + apache);
 
-        // Using hasText from Spring Framework
+        // Используя hasText from Spring Framework
         boolean spring = org.springframework.util.StringUtils.hasText(emptyString);
         System.out.println("hasText of Spring = " + spring);
     }
 
     private static void findCountOrOccurrencesTest() {
         String testString = "a.b.c.d";
-        // Using Apache Commons
+        // Используя Apache Commons
         int apache = StringUtils.countMatches(testString, ".");
         System.out.println("apache = " + apache);
 
-        // Using Spring Framework's
+        // Используя Spring Framework's
         int spring = org.springframework.util.StringUtils.countOccurrencesOf(testString, ".");
         System.out.println("spring = " + spring);
 
-        // Using replace
+        // Используя replace
         int replace = testString.length() - testString.replace(".", "").length();
         System.out.println("replace = " + replace);
 
-        // Using replaceAll case 1
+        // Используя replaceAll case 1
         int replaceAll = testString.replaceAll("[^.]", "").length();
         System.out.println("replaceAll = " + replaceAll);
 
-        // Using replaceAll case 2
+        // Используя replaceAll case 2
         int replaceAllCase2 = testString.length() - testString.replaceAll("\\.", "").length();
         System.out.println("replaceAll (second case) = " + replaceAllCase2);
 
-        // Using split
+        // Используя split
         int split = testString.split("\\.",-1).length-1;
         System.out.println("split = " + split);
 
-        // Using Java8
+        // Используя Java8
         long java8 = testString.chars().filter(ch -> ch =='.').count();
         System.out.println("java8 = " + java8);
 
-        // Using Java8 (case 2)
+        // Используя Java8 (case 2)
         long java8Case2 = testString.codePoints().filter(ch -> ch =='.').count();
         System.out.println("java8 (second case) = " + java8Case2);
 
-        // Using StringTokenizer
+        // Используя StringTokenizer
         int stringTokenizer = new StringTokenizer(" " +testString + " ", ".").countTokens()-1;
         System.out.println("stringTokenizer = " + stringTokenizer);
     }
