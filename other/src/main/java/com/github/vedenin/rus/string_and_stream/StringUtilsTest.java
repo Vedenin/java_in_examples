@@ -13,19 +13,19 @@ import java.util.StringTokenizer;
 public class StringUtilsTest {
     private static void isEmptyTest() {
         String emptyString = "";
-        // Используя isEmpty from JDK
+        // Используя isEmpty из JDK
         boolean jdkIsEmpty = emptyString != null && emptyString.isEmpty();
         System.out.println("JDK isEmpty = " + jdkIsEmpty);
 
-        // Используя equals from JDK
+        // Используя equals из JDK
         boolean jdkEquals = emptyString != null && emptyString.isEmpty();
         System.out.println("JDK equals = " + jdkEquals);
 
-        // Используя isEmpty from Apache Commons
+        // Используя isEmpty из Apache Commons
         boolean apacheIsEmpty = StringUtils.isEmpty(emptyString);
         System.out.println("Apache isEmpty = " + apacheIsEmpty);
 
-        // Используя isNullOrEmpty from Guava
+        // Используя isNullOrEmpty из Guava
         boolean guavaIsNullOrEmpty = Strings.isNullOrEmpty(emptyString);
         System.out.println("Guava isNullOrEmpty = " + guavaIsNullOrEmpty);
     }
@@ -33,11 +33,11 @@ public class StringUtilsTest {
     private static void isBlankTest() {
         String emptyString = "   ";
 
-        // Используя isBlank from Apache Commons
+        // Используя isBlank из Apache Commons
         boolean apache = StringUtils.isBlank(emptyString);
         System.out.println("isBlank of Apache = " + apache);
 
-        // Используя hasText from Spring Framework
+        // Используя hasText из Spring Framework
         boolean spring = org.springframework.util.StringUtils.hasText(emptyString);
         System.out.println("hasText of Spring = " + spring);
     }
