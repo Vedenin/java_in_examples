@@ -1,4 +1,4 @@
-package github.vedenin.url_parser;
+package github.vedenin.url_parser.eng;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -13,7 +13,7 @@ import java.nio.charset.Charset;
 
 
 /**
- * Testing downloading url
+ * Testing downloading url with correct user-agent, https, timeout and so on
  *
  * Created by vedenin on 16.01.16.
  */
