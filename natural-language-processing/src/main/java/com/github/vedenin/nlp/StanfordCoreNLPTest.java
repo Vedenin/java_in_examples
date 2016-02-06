@@ -20,7 +20,10 @@ public class StanfordCoreNLPTest {
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
 
         // read some text in the text variable
-        String text = "Stanford CoreNLP provides a set of natural language analysis tools written in Java. It can take raw human language text input and give the base forms of words, their parts of speech, whether they are names of companies, people, etc., normalize and interpret dates, times, and numeric quantities, mark up the structure of sentences in terms of phrases or word dependencies, and indicate which noun phrases refer to the same entities. It was originally developed for English, but now also provides varying levels of support for (Modern Standard) Arabic, (mainland) Chinese, French, German, and Spanish."; // Add your text here!
+        String text = "\"But I do not want to go among mad people,\" Alice remarked.\n" +
+                "\"Oh, you can not help that,\" said the Cat: \"we are all mad here. I am mad. You are mad.\"\n" +
+                "\"How do you know I am mad?\" said Alice.\n" +
+                "\"You must be,\" said the Cat, \"or you would not have come here.\" This is awful, bad, disgusting";
 
         // create an empty Annotation just with the given text
         Annotation document = new Annotation(text);
