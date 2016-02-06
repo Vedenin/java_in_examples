@@ -13,9 +13,13 @@ You can find following code examples:
     - [3. Create collections](https://github.com/Vedenin/java_in_examples/blob/master/collections/src/com/github/vedenin/eng/collections/utils/CreateCollectionTest.java) (ArrayList, HashSet, HashMap)
     - [4. Transform collections](https://github.com/Vedenin/java_in_examples/blob/master/collections/src/com/github/vedenin/eng/collections/utils/JavaTransformTest.java) (sort, remove, retain, transform, changeAll)
 
-- [III. Example of Stream API](https://github.com/Vedenin/java_in_examples/tree/master/stream_api/src/com/github/vedenin/eng/stream_api)
-    - [1. Create Stream examples](https://github.com/Vedenin/java_in_examples/blob/master/collections/src/com/github/vedenin/eng/collections/utils/CollectionCompareTests.java)
-    - [2. Collect and toArray examples](https://github.com/Vedenin/java_in_examples/blob/master/collections/src/com/github/vedenin/eng/collections/utils/CollectionSearchTests.java)
+- [III. Examples of Stream API](https://github.com/Vedenin/java_in_examples/tree/master/stream_api/src/com/github/vedenin/eng/stream_api)
+- [IV. Examples of Dependency injections](https://github.com/Vedenin/java_in_examples/tree/master/dependency_injection) in Dagger, Spring and Guice
+- [V. Examples of Natural Language Processing ](https://github.com/Vedenin/java_in_examples/tree/master/html_parser/src/github/vedenin/url_parser/eng) using OpenNLP, Stanford NLP amd so on
+- [VI. Examples of integration and html parsing](https://github.com/Vedenin/java_in_examples/tree/master/html_parser)
+- [VII. Examples of operation with String and Stream](https://github.com/Vedenin/java_in_examples/tree/master/other/src/main/java/com/github/vedenin/eng/string_and_stream)
+ - [VII. Examples of operation with Array](https://github.com/Vedenin/java_in_examples/tree/master/other/src/main/java/com/github/vedenin/eng/arrays)
+
 
 ### java Collections and Stream Api in Examples
 
