@@ -1,16 +1,21 @@
 ## This is collection of java code examples, best practice and useful article and link for Java
 
 You can find following code examples:
-- [Compare collections in Apache, Guava and Gs Collection:](https://github.com/Vedenin/java_in_examples/tree/master/collections/src/com/github/vedenin/eng/collections)
+- [I. Compare collections in Apache, Guava and Gs Collection:](https://github.com/Vedenin/java_in_examples/tree/master/collections/src/com/github/vedenin/eng/collections)
     - [1. BiMap collection in Apache, Guava and JDK analog](https://github.com/Vedenin/java_in_examples/tree/master/collections/src/com/github/vedenin/eng/collections/bimap)
     - [2. MultiMap collection in Apache, Guava, Gs Collection and JDK analog](https://github.com/Vedenin/java_in_examples/tree/master/collections/src/com/github/vedenin/eng/collections/multimap)
     - [3. Multiset collection in Apache, Guava, Gs Collection and JDK analog](https://github.com/Vedenin/java_in_examples/tree/master/collections/src/com/github/vedenin/eng/collections/multiset)
+
+
 - [II. Compare operations with collections in Apache, Guava, Gs Collection and JDK](https://github.com/Vedenin/java_in_examples/tree/master/collections/src/com/github/vedenin/eng/collections/utils)
-    - [1. Operations for comparison collections (containsAll, containsAny, intersect, difference, symmetric difference, union)](https://github.com/Vedenin/java_in_examples/blob/master/collections/src/com/github/vedenin/eng/collections/utils/CollectionCompareTests.java)
-    - [2. Operations for searching in collections (count, getFirst, getLast, getSingle, getMax, getMin, binarySearch, search, getByIndex, select)](https://github.com/Vedenin/java_in_examples/blob/master/collections/src/com/github/vedenin/eng/collections/utils/CollectionSearchTests.java)
+    - [1. Operations for comparison collections](https://github.com/Vedenin/java_in_examples/blob/master/collections/src/com/github/vedenin/eng/collections/utils/CollectionCompareTests.java)  (containsAll, containsAny, intersect, difference, symmetric difference, union)
+    - [2. Operations for searching in collections](https://github.com/Vedenin/java_in_examples/blob/master/collections/src/com/github/vedenin/eng/collections/utils/CollectionSearchTests.java) (count, getFirst, getLast, getSingle, getMax, getMin, binarySearch, search, getByIndex, select)
     - [3. Create collections (ArrayList, HashSet, HashMap)](https://github.com/Vedenin/java_in_examples/blob/master/collections/src/com/github/vedenin/eng/collections/utils/CreateCollectionTest.java)
     - [4. Transform collections (sort, remove, retain, transform, changeAll)](https://github.com/Vedenin/java_in_examples/blob/master/collections/src/com/github/vedenin/eng/collections/utils/JavaTransformTest.java)
 
+- [III. Example of Stream API](https://github.com/Vedenin/java_in_examples/tree/master/stream_api/src/com/github/vedenin/eng/stream_api)
+    - [1. Create Stream examples](https://github.com/Vedenin/java_in_examples/blob/master/collections/src/com/github/vedenin/eng/collections/utils/CollectionCompareTests.java)
+    - [2. Collect and toArray examples](https://github.com/Vedenin/java_in_examples/blob/master/collections/src/com/github/vedenin/eng/collections/utils/CollectionSearchTests.java)
 
 ### java Collections and Stream Api in Examples
 
