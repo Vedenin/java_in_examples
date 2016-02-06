@@ -1,5 +1,7 @@
 ## This is collection of java code examples, best practice and useful article and link for Java
 
+### Java code examples and best practice
+
 You can find following code examples:
 - [I. Compare collections in Apache, Guava, Gs Collection and JDK analog](https://github.com/Vedenin/java_in_examples/tree/master/collections/src/com/github/vedenin/eng/collections)
     - [1. BiMap collection](https://github.com/Vedenin/java_in_examples/tree/master/collections/src/com/github/vedenin/eng/collections/bimap)
@@ -14,14 +16,19 @@ You can find following code examples:
     - [4. Transform collections](https://github.com/Vedenin/java_in_examples/blob/master/collections/src/com/github/vedenin/eng/collections/utils/JavaTransformTest.java) (sort, remove, retain, transform, changeAll)
 
 - [III. Examples of Stream API](https://github.com/Vedenin/java_in_examples/tree/master/stream_api/src/com/github/vedenin/eng/stream_api)
+
 - [IV. Examples of Dependency injections](https://github.com/Vedenin/java_in_examples/tree/master/dependency_injection) in Dagger, Spring and Guice
+
 - [V. Examples of Natural Language Processing ](https://github.com/Vedenin/java_in_examples/tree/master/html_parser/src/github/vedenin/url_parser/eng) using OpenNLP, Stanford NLP amd so on
+
 - [VI. Examples of integration and html parsing](https://github.com/Vedenin/java_in_examples/tree/master/html_parser)
+
 - [VII. Examples of operation with String and Stream](https://github.com/Vedenin/java_in_examples/tree/master/other/src/main/java/com/github/vedenin/eng/string_and_stream)
- - [VII. Examples of operation with Array](https://github.com/Vedenin/java_in_examples/tree/master/other/src/main/java/com/github/vedenin/eng/arrays)
+
+- [VII. Examples of operation with Array](https://github.com/Vedenin/java_in_examples/tree/master/other/src/main/java/com/github/vedenin/eng/arrays)
 
 
-### java Collections and Stream Api in Examples
+### Java Collections and Stream Api in Article
 
 - [I. Stream API](#i-stream-api)
 - [1. All way to create Stream in Java 8](#1-all-way-to-create-stream-in-java-8)
