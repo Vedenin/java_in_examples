@@ -66,5 +66,6 @@
         </module>
         <module>natural-language-processing</module>
         <module>other</module>
+        <module>web</module>
     </modules>
 </project>
