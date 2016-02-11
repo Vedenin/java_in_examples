@@ -52,18 +52,10 @@
     </dependencies>
 
     <modules>
-        <module>
-            html_parser
-        </module>
-        <module>
-            stream_api
-        </module>
-        <module>
-            collections
-        </module>
-        <module>
-            dependency_injection
-        </module>
+        <module>html_parser</module>
+        <module>stream_api</module>
+        <module>collections</module>
+        <module>dependency_injection</module>
         <module>natural-language-processing</module>
         <module>other</module>
         <module>web</module>

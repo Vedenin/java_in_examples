@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.vedenin</groupId>
-    <artifactId>guice</artifactId>
+    <artifactId>dependency-injection-guice</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>Dependency injections :: Guice</name>
 

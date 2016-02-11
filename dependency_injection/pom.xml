@@ -11,13 +11,13 @@
 
     <modules>
         <module>
-            dagger
+            dependency-injection-dagger
         </module>
         <module>
-            guice
+            dependency-injection-guice
         </module>
         <module>
-            spring
+            dependency-injection-spring
         </module>
     </modules>
 </project>

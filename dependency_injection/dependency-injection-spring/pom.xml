@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.vedenin</groupId>
-    <artifactId>spring</artifactId>
+    <artifactId>dependency-injection-spring</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>Dependency injections :: Spring</name>
 
