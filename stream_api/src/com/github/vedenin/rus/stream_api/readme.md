@@ -295,6 +295,9 @@ Java Stream API предлагает два вида методов:
 Вот и все. Надеюсь, моя небольшая шпаргалка по работе со stream api была для вас полезной. Все исходники есть на [github'е](https://github.com/Vedenin/java_collections_overview/tree/master/src/com/github/vedenin/rus/stream_api), удачи в написании хорошего кода. 
 
 **P.S.** Список других статей, где можно прочитать дополнительно про Stream Api: 
+
 1.  [Processing Data with Java SE 8 Streams, Part 1](http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html) от Oracle, 
+
 2.  [Processing Data with Java SE 8 Streams, Part 2](http://www.oracle.com/technetwork/articles/java/architect-streams-pt2-2227132.html) от Oracle, 
+
 3.  [Полное руководство по Java 8 Stream](http://prologistic.com.ua/polnoe-rukovodstvo-po-java-8-stream.html)</string,></stringbuilder></stringbuilder>
