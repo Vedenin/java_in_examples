@@ -18,16 +18,17 @@
 
 Перечислим несколько способов создать стрим
 
-| Способ создания стрима | Шаблон создания | Пример |
-| 1. Классический: Создание стрима из коллекции | collection.**stream**() |  Collection collection = Arrays.asList("a1", "a2", "a3"); Stream streamFromCollection = collection.stream(); |
-| 2. Создание стрима из значений | **Stream.of**(_значение1_, ... _значениеN_) |  Stream streamFromValues = Stream.of("a1", "a2", "a3"); |
-| 3. Создание стрима из массива | **Arrays.stream**(_массив_) |  String[] array = {"a1","a2","a3"}; Stream streamFromArrays = Arrays.stream(array); |
-| 4. Создание стрима из файла (каждая строка в файле будет отдельным элементом в стриме) | **Files.lines**(_путь_к_файлу_) |  Stream streamFromFiles = Files.lines(Paths.get("file.txt")) |
-| 5. Создание стрима из строки | "строка".**chars**() |  IntStream streamFromString = "123".chars() |
-| 6. С помощью Stream.builder | Stream.**builder**().**add**(...)....**build**() |  Stream.builder().add("a1").add("a2").add("a3").build() |
-| 7. Создание параллельного стрима | collection.**parallelStream**() |  Stream stream = collection.parallelStream(); |
-| 8. Создание бесконечных стрима с помощью Stream.iterate | **Stream.iterate**(_начальное_условие_, _выражение_генерации_) |  Stream <integer>streamFromIterate = Stream.iterate(1, n -> n + 1)</integer> |
-| 9. Создание бесконечных стрима с помощью Stream.generate | **Stream.generate**(_выражение_генерации_) |  Stream streamFromGenerate = Stream.generate(() -> "a1") |
+ Способ создания стрима | Шаблон создания | Пример |
+-------------	 | 	-------------	 | 	-------------
+ 1. Классический: Создание стрима из коллекции | collection.**stream**() |  Collection collection = Arrays.asList("a1", "a2", "a3"); Stream streamFromCollection = collection.stream(); |
+ 2. Создание стрима из значений | **Stream.of**(_значение1_, ... _значениеN_)   Stream streamFromValues = Stream.of("a1", "a2", "a3"); |
+ 3. Создание стрима из массива | **Arrays.stream**(_массив_) |  String[] array = {"a1","a2","a3"}; Stream streamFromArrays = Arrays.stream(array); |
+ 4. Создание стрима из файла (каждая строка в файле будет отдельным элементом в стриме) | **Files.lines**(_путь_к_файлу_) |  Stream streamFromFiles = Files.lines(Paths.get("file.txt")) |
+ 5. Создание стрима из строки | "строка".**chars**() |  IntStream streamFromString = "123".chars() |
+ 6. С помощью Stream.builder | Stream.**builder**().**add**(...)....**build**() |  Stream.builder().add("a1").add("a2").add("a3").build() |
+ 7. Создание параллельного стрима | collection.**parallelStream**() |  Stream stream = collection.parallelStream(); |
+ 8. Создание бесконечных стрима с помощью Stream.iterate | **Stream.iterate**(_начальное_условие_, _выражение_генерации_) |  Stream <integer>streamFromIterate = Stream.iterate(1, n -> n + 1)</integer> |
+ 9. Создание бесконечных стрима с помощью Stream.generate | **Stream.generate**(_выражение_генерации_) |  Stream streamFromGenerate = Stream.generate(() -> "a1") |
 
 В принципе, кроме последних двух способов создания стрима, все не отличается от обычных способов создания коллекций. Последние два способа служат для генерации бесконечных стримов, в iterate задается начальное условие и выражение получение следующего значения из предыдущего, то есть Stream.iterate(1, n -> n + 1) будет выдавать значения 1, 2, 3, 4, ... N. Stream.generate служит для генерации константных и случайных значений, он просто выдает значения соответствующие выражению, в данном примере, он будет выдавать бесконечное количество значений "a1". Для тех кто не знает лямбды Выражение n -> n + 1, это просто аналог выражения Integer func(Integer n) { return n+1;}, а выражение () -> "a1" аналог выражения String func() { return "a1";} обернутых в анонимный класс. 
 
