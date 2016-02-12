@@ -84,6 +84,7 @@ Java Stream API предлагает два вида методов:
 ### **2.3 Краткое описание дополнительных методов у числовых стримов**
 
  Метод stream | Описание | Пример |
+  -------------	 | 	-------------	 | 	-------------|
 **sum** | Возвращает сумму всех чисел | collection.stream().mapToInt((s) -> Integer.parseInt(s)).sum() |
 **average** | Возвращает среднее арифметическое всех чисел | collection.stream().mapToInt((s) -> Integer.parseInt(s)).average() |
 **mapToObj** | Преобразует числовой стрим обратно в объектный | intStream.mapToObj((id) -> new Key(id)).toArray() |
@@ -91,6 +92,7 @@ Java Stream API предлагает два вида методов:
 ### **2.4 Несколько других полезных методов стримов**
 
  Метод stream | Описание |
+  -------------	 | 	-------------	 | 	
  **isParallel** | Узнать является ли стрим параллельным |
  **parallel** | Вернуть параллельный стрим, если стрим уже параллельный, то может вернуть самого себя |
  **sequential** | Вернуть последовательный стрим, если стрим уже последовательный, то может вернуть самого себя |
@@ -106,6 +108,7 @@ Java Stream API предлагает два вида методов:
 **Условие**: дана коллекция строк Arrays.asList("a1", "a2", "a3", "a1"), давайте посмотрим как её можно обрабатывать используя методы filter, findFirst, findAny, skip и count:
 
  Задача | Код примера | Результат |
+  -------------	 | 	-------------	 | 	-------------|
  Вернуть количество вхождений объекта "a1" | collection.stream().filter("a1"::equals).count() | 2 |
  Вернуть первый элемент коллекции или 0, если коллекция пуста | collection.stream().findFirst().orElse(0) | a1 |
  Вернуть последний элемент коллекции или "empty", если коллекция пуста | collection.stream().skip(collection.size() - 1).findAny().orElse("empty") | a1 |
@@ -117,6 +120,7 @@ Java Stream API предлагает два вида методов:
 **Обратите внимание**, что методы findFirst и findAny возвращают новый тип Optional, появившийся в Java 8, для того чтобы избежать NullPointerException. Метод filter удобно использовать для выборки лишь определенного множества значений, а метод skip позволяет пропускать определенное количество элементов. <spoiler title="Если вы не знаете лямбды">Выражение "a3"::equals это аналог boolean func(s) { return "a3".equals(s);}, а (s) -> s.contains("1") это аналог boolean func(s) { return s.contains("1");} обернутых в анонимный класс.</spoiler> **Условие**: дана коллекция класс People (с полями name - имя, age - возраст, sex - пол), вида Arrays.asList( new People("Вася", 16, Sex.MAN), new People("Петя", 23, Sex.MAN), new People("Елена", 42, Sex.WOMEN), new People("Иван Иванович", 69, Sex.MAN)). Давайте посмотрим примеры как работать с таким классом:
 
  Задача | Код примера | Результат |
+  -------------	 | 	-------------	 | 	-------------|
  Выбрать мужчин-военнообязанных (от 18 до 27 лет) | peoples.stream().filter((p)-> p.getAge() >= 18 && p.getAge() < 27 && p.getSex() == Sex.MAN).collect(Collectors.toList()) | [{name='Петя', age=23, sex=MAN}] |
  Найти средний возраст среди мужчин | peoples.stream().filter((p) -> p.getSex() == Sex.MAN). mapToInt(People::getAge).average().getAsDouble() | 36.0 |
  Найти кол-во потенциально работоспособных людей в выборке (т.е. от 18 лет и учитывая что женщины выходят в 55 лет, а мужчина в 60) | peoples.stream().filter((p) -> p.getAge() >= 18).filter( (p) -> (p.getSex() == Sex.WOMEN && p.getAge() < 55) || (p.getSex() == Sex.MAN && p.getAge() < 60)).count() | 2 |
