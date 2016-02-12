@@ -50,7 +50,7 @@ Java Stream API предлагает два вида методов:
 ### **2.1 Краткое описание конвейерных методов работы со стримами**
 
  Метод stream | Описание | Пример |
--------------	 | 	-------------	 | 	-------------
+-------------	 | 	-------------	 | 	-------------|
  **filter** | Отфильтровывает записи, возвращает только записи, соответствующие условию | collection.stream().filter("a1"::equals).count() |
  **skip** | Позволяет пропустить N первых элементов | collection.stream().skip(collection.size() - 1).findFirst().orElse("1") |
  **distinct** | Возвращает стрим без дубликатов (для метода equals) | collection.stream().distinct().collect(Collectors.toList()) |
@@ -64,6 +64,7 @@ Java Stream API предлагает два вида методов:
 ### **2.2 Краткое описание терминальных методов работы со стримами**
 
  Метод stream | Описание | Пример |
+ -------------	 | 	-------------	 | 	-------------|
  **findFirst** | Возвращает первый элемент из стрима (возвращает Optional) | collection.stream().findFirst().orElse("1") |
  **findAny** | Возвращает любой подходящий элемент из стрима (возвращает Optional) | collection.stream().findAny().orElse("1") |
  **collect** | Представление результатов в виде коллекций и других структур данных | collection.stream().filter((s) -> s.contains("1")).collect(Collectors.toList()) |
