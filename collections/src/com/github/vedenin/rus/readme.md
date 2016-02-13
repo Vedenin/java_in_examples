@@ -328,7 +328,338 @@
 
 #### **Примеры использования мультимножества (MultiSet/Bag) для подсчета слов в тексте**
 
-**Есть задача**: дана строчка текста "Hello World! Hello All! Hi World!", нужно разобрать её на отдельные слова где разделитель только пробел, сохранить в какую-нибудь коллекцию и вывести количество вхождений каждого слова, общее количество слов в тексте и количество уникальных слов. Посмотрим как это сделать с помощью 1\. разных вариантов Multiset от Guava: Используем HashMultiset от guava для подсчета слов Обратите внимание, что порядок вывода в System.out.println(multiset) и в System.out.println(multiset.elementSet()) - произвольный, то есть не определен. // Разберем текст на слова String INPUT_TEXT = "Hello World! Hello All! Hi World!"; // Создаем Multiset Multiset multiset = HashMultiset.create(Arrays.asList(INPUT_TEXT.split(" "))); // Выводим кол-вом вхождений слов System.out.println(multiset); // напечатает [Hi, Hello x 2, World! x 2, All!] - в произвольном порядке // Выводим все уникальные слова System.out.println(multiset.elementSet()); // напечатает [Hi, Hello, World!, All!] - в произвольном порядке // Выводим количество по каждому слову System.out.println("Hello = " + multiset.count("Hello")); // напечатает 2 System.out.println("World = " + multiset.count("World!")); // напечатает 2 System.out.println("All = " + multiset.count("All!")); // напечатает 1 System.out.println("Hi = " + multiset.count("Hi")); // напечатает 1 System.out.println("Empty = " + multiset.count("Empty")); // напечатает 0 // Выводим общее количества всех слов в тексте System.out.println(multiset.size()); //напечатает 6 // Выводим общее количество всех уникальных слов System.out.println(multiset.elementSet().size()); //напечатает 4 Используем TreeMultiset от guava для подсчета слов Обратите внимание, что порядок вывода в System.out.println(multiset) и в System.out.println(multiset.elementSet()) - натуральный, то есть слова отсортированы по алфавиту. // Разберем текст на слова String INPUT_TEXT = "Hello World! Hello All! Hi World!"; // Создаем Multiset Multiset multiset = TreeMultiset.create(Arrays.asList(INPUT_TEXT.split(" "))); // Выводим кол-вом вхождений слов System.out.println(multiset); // напечатает [All!, Hello x 2, Hi, World! x 2]- в алфавитном порядке // Выводим все уникальные слова System.out.println(multiset.elementSet()); // напечатает [All!, Hello, Hi, World!]- в алфавитном порядке // Выводим количество по каждому слову System.out.println("Hello = " + multiset.count("Hello")); // напечатает 2 System.out.println("World = " + multiset.count("World!")); // напечатает 2 System.out.println("All = " + multiset.count("All!")); // напечатает 1 System.out.println("Hi = " + multiset.count("Hi")); // напечатает 1 System.out.println("Empty = " + multiset.count("Empty")); // напечатает 0 // Выводим общее количества всех слов в тексте System.out.println(multiset.size()); //напечатает 6 // Выводим общее количество всех уникальных слов System.out.println(multiset.elementSet().size()); //напечатает 4 Используем LinkedHashMultisetTest от guava для подсчета слов Обратите внимание, что порядок вывода в System.out.println(multiset) и в System.out.println(multiset.elementSet()) - в порядке первого добавления элемента // Разберем текст на слова String INPUT_TEXT = "Hello World! Hello All! Hi World!"; // Создаем Multiset Multiset multiset = LinkedHashMultiset.create(Arrays.asList(INPUT_TEXT.split(" "))); // Выводим кол-вом вхождений слов System.out.println(multiset); // напечатает [Hello x 2, World! x 2, All!, Hi]- в порядке первого добавления элемента // Выводим все уникальные слова System.out.println(multiset.elementSet()); // напечатает [Hello, World!, All!, Hi] - в порядке первого добавления элемента // Выводим количество по каждому слову System.out.println("Hello = " + multiset.count("Hello")); // напечатает 2 System.out.println("World = " + multiset.count("World!")); // напечатает 2 System.out.println("All = " + multiset.count("All!")); // напечатает 1 System.out.println("Hi = " + multiset.count("Hi")); // напечатает 1 System.out.println("Empty = " + multiset.count("Empty")); // напечатает 0 // Выводим общее количества всех слов в тексте System.out.println(multiset.size()); //напечатает 6 // Выводим общее количество всех уникальных слов System.out.println(multiset.elementSet().size()); //напечатает 4 Используем ConcurrentHashMultiset от guava для подсчета слов"> Обратите внимание, что порядок вывода в System.out.println(multiset) и в System.out.println(multiset.elementSet()) - произвольный, то есть не определен, так как это по сути многопоточная версия HashMultiset // Разберем текст на слова String INPUT_TEXT = "Hello World! Hello All! Hi World!"; // Создаем Multiset Multiset multiset = ConcurrentHashMultiset.create(Arrays.asList(INPUT_TEXT.split(" "))); // Выводим кол-вом вхождений слов System.out.println(multiset); // напечатает [Hi, Hello x 2, World! x 2, All!] - в произвольном порядке // Выводим все уникальные слова System.out.println(multiset.elementSet()); // напечатает [Hi, Hello, World!, All!] - в произвольном порядке // Выводим количество по каждому слову System.out.println("Hello = " + multiset.count("Hello")); // напечатает 2 System.out.println("World = " + multiset.count("World!")); // напечатает 2 System.out.println("All = " + multiset.count("All!")); // напечатает 1 System.out.println("Hi = " + multiset.count("Hi")); // напечатает 1 System.out.println("Empty = " + multiset.count("Empty")); // напечатает 0 // Выводим общее количества всех слов в тексте System.out.println(multiset.size()); //напечатает 6 // Выводим общее количество всех уникальных слов System.out.println(multiset.elementSet().size()); //напечатает 4 2\. разных вариантов Bag от Apache Commons Collections: Использование HashBag из Apache Commons Collections Обратите внимание, что порядок вывода в System.out.println(multiset) и в System.out.println(multiset.elementSet()) - произвольный, то есть не определен. // Разберем текст на слова String INPUT_TEXT = "Hello World! Hello All! Hi World!"; // Создаем Multiset Bag bag = new HashBag(Arrays.asList(INPUT_TEXT.split(" "))); // Выводим кол-вом вхождений слов System.out.println(bag); // напечатает [1:Hi,2:Hello,2:World!,1:All!] - в произвольном порядке // Выводим все уникальные слова System.out.println(bag.uniqueSet()); // напечатает [Hi, Hello, World!, All!] - в произвольном порядке // Выводим количество по каждому слову System.out.println("Hello = " + bag.getCount("Hello")); // напечатает 2 System.out.println("World = " + bag.getCount("World!")); // напечатает 2 System.out.println("All = " + bag.getCount("All!")); // напечатает 1 System.out.println("Hi = " + bag.getCount("Hi")); // напечатает 1 System.out.println("Empty = " + bag.getCount("Empty")); // напечатает 0 // Выводим общее количества всех слов в тексте System.out.println(bag.size()); //напечатает 6 // Выводим общее количество всех уникальных слов System.out.println(bag.uniqueSet().size()); //напечатает 4 Использование TreeBag из Apache Commons Collections Обратите внимание, что порядок вывода в System.out.println(multiset) и в System.out.println(multiset.elementSet()) - натуральный, то есть слова отсортированы по алфавиту. // Разберем текст на слова String INPUT_TEXT = "Hello World! Hello All! Hi World!"; // Создаем Multiset Bag bag = new TreeBag(Arrays.asList(INPUT_TEXT.split(" "))); // Выводим кол-вом вхождений слов System.out.println(bag); // напечатает [1:All!,2:Hello,1:Hi,2:World!]- в алфавитном порядке // Выводим все уникальные слова System.out.println(bag.uniqueSet()); // напечатает [All!, Hello, Hi, World!]- в алфавитном порядке // Выводим количество по каждому слову System.out.println("Hello = " + bag.getCount("Hello")); // напечатает 2 System.out.println("World = " + bag.getCount("World!")); // напечатает 2 System.out.println("All = " + bag.getCount("All!")); // напечатает 1 System.out.println("Hi = " + bag.getCount("Hi")); // напечатает 1 System.out.println("Empty = " + bag.getCount("Empty")); // напечатает 0 // Выводим общее количества всех слов в тексте System.out.println(bag.size()); //напечатает 6 // Выводим общее количество всех уникальных слов System.out.println(bag.uniqueSet().size()); //напечатает 4 <spoiler title="Использование SynchronizedBag из Apache Commons Collections">Обратите внимание, что порядок вывода в System.out.println(multiset) и в System.out.println(multiset.elementSet()) - произвольный, то есть не определен, так как это по сути многопоточная версия HashBag // Разберем текст на слова String INPUT_TEXT = "Hello World! Hello All! Hi World!"; // Создаем Multiset Bag bag = SynchronizedBag.synchronizedBag(new HashBag(Arrays.asList(INPUT_TEXT.split(" ")))); // Выводим кол-вом вхождений слов System.out.println(bag); // напечатает [1:Hi,2:Hello,2:World!,1:All!] - в произвольном порядке // Выводим все уникальные слова System.out.println(bag.uniqueSet()); // напечатает [Hi, Hello, World!, All!] - в произвольном порядке // Выводим количество по каждому слову System.out.println("Hello = " + bag.getCount("Hello")); // напечатает 2 System.out.println("World = " + bag.getCount("World!")); // напечатает 2 System.out.println("All = " + bag.getCount("All!")); // напечатает 1 System.out.println("Hi = " + bag.getCount("Hi")); // напечатает 1 System.out.println("Empty = " + bag.getCount("Empty")); // напечатает 0 // Выводим общее количества всех слов в тексте System.out.println(bag.size()); //напечатает 6 // Выводим общее количество всех уникальных слов System.out.println(bag.uniqueSet().size()); //напечатает 4</spoiler> <spoiler title="Использование SynchronizedSortedBag из Apache Commons Collections">Обратите внимание, что порядок вывода в System.out.println(multiset) и в System.out.println(multiset.elementSet()) - натуральный, то есть слова отсортированы по алфавиту, так как это по сути многопоточная версия SortedBag // Разберем текст на слова String INPUT_TEXT = "Hello World! Hello All! Hi World!"; // Создаем Multiset Bag bag = SynchronizedSortedBag.synchronizedBag(new TreeBag(Arrays.asList(INPUT_TEXT.split(" ")))); // Выводим кол-вом вхождений слов System.out.println(bag); // напечатает [1:All!,2:Hello,1:Hi,2:World!]- в алфавитном порядке // Выводим все уникальные слова System.out.println(bag.uniqueSet()); // напечатает [All!, Hello, Hi, World!]- в алфавитном порядке // Выводим количество по каждому слову System.out.println("Hello = " + bag.getCount("Hello")); // напечатает 2 System.out.println("World = " + bag.getCount("World!")); // напечатает 2 System.out.println("All = " + bag.getCount("All!")); // напечатает 1 System.out.println("Hi = " + bag.getCount("Hi")); // напечатает 1 System.out.println("Empty = " + bag.getCount("Empty")); // напечатает 0 // Выводим общее количества всех слов в тексте System.out.println(bag.size()); // напечатает 6 // Выводим общее количество всех уникальных слов System.out.println(bag.uniqueSet().size()); // напечатает 4</spoiler> 3\. разных вариантов Bag от GS Collections: <spoiler title="Использование MutableBag из GS Collections">Обратите внимание, что порядок вывода в System.out.println(bag) и в System.out.println(bag.toSet()) - не определен // Разберем текст на слова String INPUT_TEXT = "Hello World! Hello All! Hi World!"; // Создаем Multiset MutableBag bag = HashBag.newBag(Arrays.asList(INPUT_TEXT.split(" "))); // Выводим кол-вом вхождений слов System.out.println(bag); // напечатает [Hi, World!, World!, Hello, Hello, All!]- в произвольном порядке // Выводим все уникальные слова System.out.println(bag.toSet()); // напечатает [Hi, Hello, World!, All!] - в произвольном порядке // Выводим количество по каждому слову System.out.println("Hello = " + bag.occurrencesOf("Hello")); // напечатает 2 System.out.println("World = " + bag.occurrencesOf("World!")); // напечатает 2 System.out.println("All = " + bag.occurrencesOf("All!")); // напечатает 1 System.out.println("Hi = " + bag.occurrencesOf("Hi")); // напечатает 1 System.out.println("Empty = " + bag.occurrencesOf("Empty")); // напечатает 0 // Выводим общее количества всех слов в тексте System.out.println(bag.size()); //напечатает 6 // Выводим общее количество всех уникальных слов System.out.println(bag.toSet().size()); //напечатает 4</spoiler> <spoiler title="Использование MutableSortedBag из GS Collections">Обратите внимание, что порядок вывода в System.out.println(bag) и в System.out.println(bag.toSortedSet()) - будет натуральным, т.е. по алфавиту в данном случае // Разберем текст на слова String INPUT_TEXT = "Hello World! Hello All! Hi World!"; // Создаем Multiset MutableSortedBag bag = TreeBag.newBag(Arrays.asList(INPUT_TEXT.split(" "))); // Выводим кол-вом вхождений слов System.out.println(bag); // напечатает [All!, Hello, Hello, Hi, World!, World!]- в натуральном порядке // Выводим все уникальные слова System.out.println(bag.toSortedSet()); // напечатает [All!, Hello, Hi, World!]- в натуральном порядке // Выводим количество по каждому слову System.out.println("Hello = " + bag.occurrencesOf("Hello")); // напечатает 2 System.out.println("World = " + bag.occurrencesOf("World!")); // напечатает 2 System.out.println("All = " + bag.occurrencesOf("All!")); // напечатает 1 System.out.println("Hi = " + bag.occurrencesOf("Hi")); // напечатает 1 System.out.println("Empty = " + bag.occurrencesOf("Empty")); // напечатает 0 // Выводим общее количества всех слов в тексте System.out.println(bag.size()); //напечатает 6 // Выводим общее количество всех уникальных слов System.out.println(bag.toSet().size()); //напечатает 4</spoiler> 4\. Ну и наконец, посмотрим как можно сделать тоже самое в чистом JDK с помощью эмуляции multiSet через HashMap <spoiler title="Эмуляция multiSet через HashMap">Как вы легко можете заметить, кода потребовалось, естественно, больше чем у любых реализаций multiSet или Bag. // Разберем текст на слова String INPUT_TEXT = "Hello World! Hello All! Hi World!"; List listResult = Arrays.asList(INPUT_TEXT.split(" ")); // Создаем эмуляцию Multiset c помощью HashMap и заполняем Map <string, integer="">fakeMultiset = new HashMap<string,integer>(listResult.size()); for(String word: listResult) { Integer cnt = fakeMultiset.get(word); fakeMultiset.put(word, cnt == null ? 1 : cnt + 1); } // Выводим кол-вом вхождений слов System.out.println(fakeMultiset); // напечатает {World!=2, Hi=1, Hello=2, All!=1}- в произвольном порядке // Выводим все уникальные слова System.out.println(fakeMultiset.keySet()); // напечатает [World!, Hi, Hello, All!] - в произвольном порядке // Выводим количество по каждому слову System.out.println("Hello = " + fakeMultiset.get("Hello")); // напечатает 2 System.out.println("World = " + fakeMultiset.get("World!")); // напечатает 2 System.out.println("All = " + fakeMultiset.get("All!")); // напечатает 1 System.out.println("Hi = " + fakeMultiset.get("Hi")); // напечатает 1 System.out.println("Empty = " + fakeMultiset.get("Empty")); // напечатает null // Выводим общее количества всех слов в тексте Integer cnt = 0; for (Integer wordCount : fakeMultiset.values()){ cnt += wordCount; } System.out.println(cnt); //напечатает 6 // Выводим общее количество уникальных слов System.out.println(fakeMultiset.size()); //напечатает 4</string,integer></string,></spoiler>
+**Есть задача**: дана строчка текста "Hello World! Hello All! Hi World!", нужно разобрать её на отдельные слова где разделитель только пробел, сохранить в какую-нибудь коллекцию и вывести количество вхождений каждого слова, общее количество слов в тексте и количество уникальных слов. Посмотрим как это сделать с помощью 
+
+        Посмотрим как это сделать с помощью
+        1. разных вариантов Multiset от Guava:
+        Используем HashMultiset от guava для подсчета слов
+
+            Обратите внимание, что порядок вывода в System.out.println(multiset) и в
+            System.out.println(multiset.elementSet()) - произвольный, то есть не определен.
+            
+            // Разберем текст на слова
+            String INPUT_TEXT = "Hello World! Hello All! Hi World!";
+            // Создаем Multiset
+            Multiset multiset = HashMultiset.create(Arrays.asList(INPUT_TEXT.split(" ")));
+
+                // Выводим кол-вом вхождений слов
+                System.out.println(multiset); // напечатает [Hi, Hello x 2, World! x 2, All!] - в произвольном порядке
+                // Выводим все уникальные слова
+                System.out.println(multiset.elementSet()); // напечатает [Hi, Hello, World!, All!] - в произвольном
+                порядке
+
+                // Выводим количество по каждому слову
+                System.out.println("Hello = " + multiset.count("Hello")); // напечатает 2
+                System.out.println("World = " + multiset.count("World!")); // напечатает 2
+                System.out.println("All = " + multiset.count("All!")); // напечатает 1
+                System.out.println("Hi = " + multiset.count("Hi")); // напечатает 1
+                System.out.println("Empty = " + multiset.count("Empty")); // напечатает 0
+
+                // Выводим общее количества всех слов в тексте
+                System.out.println(multiset.size()); //напечатает 6
+
+                // Выводим общее количество всех уникальных слов
+                System.out.println(multiset.elementSet().size()); //напечатает 4
+                
+Используем TreeMultiset от guava для подсчета слов
+Обратите внимание, что порядок вывода в System.out.println(multiset) и в
+System.out.println(multiset.elementSet()) - натуральный, то есть слова отсортированы по алфавиту.
+            
+            // Разберем текст на слова
+            String INPUT_TEXT = "Hello World! Hello All! Hi World!";
+            // Создаем Multiset
+            Multiset multiset = TreeMultiset.create(Arrays.asList(INPUT_TEXT.split(" ")));
+
+                // Выводим кол-вом вхождений слов
+                System.out.println(multiset); // напечатает [All!, Hello x 2, Hi, World! x 2]- в алфавитном порядке
+                // Выводим все уникальные слова
+                System.out.println(multiset.elementSet()); // напечатает [All!, Hello, Hi, World!]- в алфавитном порядке
+
+                // Выводим количество по каждому слову
+                System.out.println("Hello = " + multiset.count("Hello")); // напечатает 2
+                System.out.println("World = " + multiset.count("World!")); // напечатает 2
+                System.out.println("All = " + multiset.count("All!")); // напечатает 1
+                System.out.println("Hi = " + multiset.count("Hi")); // напечатает 1
+                System.out.println("Empty = " + multiset.count("Empty")); // напечатает 0
+
+                // Выводим общее количества всех слов в тексте
+                System.out.println(multiset.size()); //напечатает 6
+
+                // Выводим общее количество всех уникальных слов
+                System.out.println(multiset.elementSet().size()); //напечатает 4
+                
+Используем LinkedHashMultisetTest от guava для подсчета слов
+Обратите внимание, что порядок вывода в System.out.println(multiset) и в
+System.out.println(multiset.elementSet()) - в порядке первого добавления элемента
+            
+            // Разберем текст на слова
+            String INPUT_TEXT = "Hello World! Hello All! Hi World!";
+            // Создаем Multiset
+            Multiset multiset = LinkedHashMultiset.create(Arrays.asList(INPUT_TEXT.split(" ")));
+
+                // Выводим кол-вом вхождений слов
+                System.out.println(multiset); // напечатает [Hello x 2, World! x 2, All!, Hi]- в порядке первого
+                добавления элемента
+                // Выводим все уникальные слова
+                System.out.println(multiset.elementSet()); // напечатает [Hello, World!, All!, Hi] - в порядке первого
+                добавления элемента
+
+                // Выводим количество по каждому слову
+                System.out.println("Hello = " + multiset.count("Hello")); // напечатает 2
+                System.out.println("World = " + multiset.count("World!")); // напечатает 2
+                System.out.println("All = " + multiset.count("All!")); // напечатает 1
+                System.out.println("Hi = " + multiset.count("Hi")); // напечатает 1
+                System.out.println("Empty = " + multiset.count("Empty")); // напечатает 0
+
+                // Выводим общее количества всех слов в тексте
+                System.out.println(multiset.size()); //напечатает 6
+
+                // Выводим общее количество всех уникальных слов
+                System.out.println(multiset.elementSet().size()); //напечатает 4
+                
+Используем ConcurrentHashMultiset от guava для подсчета слов">
+Обратите внимание, что порядок вывода в System.out.println(multiset) и в
+System.out.println(multiset.elementSet()) - произвольный, то есть не определен, так как это по сути
+многопоточная версия HashMultiset
+            
+            // Разберем текст на слова
+            String INPUT_TEXT = "Hello World! Hello All! Hi World!";
+            // Создаем Multiset
+            Multiset multiset = ConcurrentHashMultiset.create(Arrays.asList(INPUT_TEXT.split(" ")));
+
+                // Выводим кол-вом вхождений слов
+                System.out.println(multiset); // напечатает [Hi, Hello x 2, World! x 2, All!] - в произвольном порядке
+                // Выводим все уникальные слова
+                System.out.println(multiset.elementSet()); // напечатает [Hi, Hello, World!, All!] - в произвольном
+                порядке
+
+                // Выводим количество по каждому слову
+                System.out.println("Hello = " + multiset.count("Hello")); // напечатает 2
+                System.out.println("World = " + multiset.count("World!")); // напечатает 2
+                System.out.println("All = " + multiset.count("All!")); // напечатает 1
+                System.out.println("Hi = " + multiset.count("Hi")); // напечатает 1
+                System.out.println("Empty = " + multiset.count("Empty")); // напечатает 0
+
+                // Выводим общее количества всех слов в тексте
+                System.out.println(multiset.size()); //напечатает 6
+
+                // Выводим общее количество всех уникальных слов
+                System.out.println(multiset.elementSet().size()); //напечатает 4
+                
+
+2. разных вариантов Bag от Apache Commons Collections:
+Использование HashBag из Apache Commons Collections
+Обратите внимание, что порядок вывода в System.out.println(multiset) и в
+System.out.println(multiset.elementSet()) - произвольный, то есть не определен.
+            
+            // Разберем текст на слова
+            String INPUT_TEXT = "Hello World! Hello All! Hi World!";
+            // Создаем Multiset
+            Bag bag = new HashBag(Arrays.asList(INPUT_TEXT.split(" ")));
+
+            // Выводим кол-вом вхождений слов
+            System.out.println(bag); // напечатает [1:Hi,2:Hello,2:World!,1:All!] - в произвольном порядке
+            // Выводим все уникальные слова
+            System.out.println(bag.uniqueSet()); // напечатает [Hi, Hello, World!, All!] - в произвольном порядке
+
+            // Выводим количество по каждому слову
+            System.out.println("Hello = " + bag.getCount("Hello")); // напечатает 2
+            System.out.println("World = " + bag.getCount("World!")); // напечатает 2
+            System.out.println("All = " + bag.getCount("All!")); // напечатает 1
+            System.out.println("Hi = " + bag.getCount("Hi")); // напечатает 1
+            System.out.println("Empty = " + bag.getCount("Empty")); // напечатает 0
+
+            // Выводим общее количества всех слов в тексте
+            System.out.println(bag.size()); //напечатает 6
+
+            // Выводим общее количество всех уникальных слов
+            System.out.println(bag.uniqueSet().size()); //напечатает 4
+            
+Использование TreeBag из Apache Commons Collections
+Обратите внимание, что порядок вывода в System.out.println(multiset) и в
+System.out.println(multiset.elementSet()) - натуральный, то есть слова отсортированы по алфавиту.
+            
+            // Разберем текст на слова
+            String INPUT_TEXT = "Hello World! Hello All! Hi World!";
+            // Создаем Multiset
+            Bag bag = new TreeBag(Arrays.asList(INPUT_TEXT.split(" ")));
+
+            // Выводим кол-вом вхождений слов
+            System.out.println(bag); // напечатает [1:All!,2:Hello,1:Hi,2:World!]- в алфавитном порядке
+            // Выводим все уникальные слова
+            System.out.println(bag.uniqueSet()); // напечатает [All!, Hello, Hi, World!]- в алфавитном порядке
+
+            // Выводим количество по каждому слову
+            System.out.println("Hello = " + bag.getCount("Hello")); // напечатает 2
+            System.out.println("World = " + bag.getCount("World!")); // напечатает 2
+            System.out.println("All = " + bag.getCount("All!")); // напечатает 1
+            System.out.println("Hi = " + bag.getCount("Hi")); // напечатает 1
+            System.out.println("Empty = " + bag.getCount("Empty")); // напечатает 0
+
+            // Выводим общее количества всех слов в тексте
+            System.out.println(bag.size()); //напечатает 6
+
+            // Выводим общее количество всех уникальных слов
+            System.out.println(bag.uniqueSet().size()); //напечатает 4
+            
+        </spoiler>
+        <spoiler title="Использование SynchronizedBag из Apache Commons Collections">
+            Обратите внимание, что порядок вывода в System.out.println(multiset) и в
+            System.out.println(multiset.elementSet()) - произвольный, то есть не определен, так как это по сути
+            многопоточная версия HashBag
+            
+            // Разберем текст на слова
+            String INPUT_TEXT = "Hello World! Hello All! Hi World!";
+            // Создаем Multiset
+            Bag bag = SynchronizedBag.synchronizedBag(new HashBag(Arrays.asList(INPUT_TEXT.split(" "))));
+
+            // Выводим кол-вом вхождений слов
+            System.out.println(bag); // напечатает [1:Hi,2:Hello,2:World!,1:All!] - в произвольном порядке
+            // Выводим все уникальные слова
+            System.out.println(bag.uniqueSet()); // напечатает [Hi, Hello, World!, All!] - в произвольном порядке
+
+            // Выводим количество по каждому слову
+            System.out.println("Hello = " + bag.getCount("Hello")); // напечатает 2
+            System.out.println("World = " + bag.getCount("World!")); // напечатает 2
+            System.out.println("All = " + bag.getCount("All!")); // напечатает 1
+            System.out.println("Hi = " + bag.getCount("Hi")); // напечатает 1
+            System.out.println("Empty = " + bag.getCount("Empty")); // напечатает 0
+
+            // Выводим общее количества всех слов в тексте
+            System.out.println(bag.size()); //напечатает 6
+
+            // Выводим общее количество всех уникальных слов
+            System.out.println(bag.uniqueSet().size()); //напечатает 4
+            
+        </spoiler>
+        <spoiler title="Использование SynchronizedSortedBag из Apache Commons Collections">
+            Обратите внимание, что порядок вывода в System.out.println(multiset) и в
+            System.out.println(multiset.elementSet()) - натуральный, то есть слова отсортированы по алфавиту, так как
+            это по сути многопоточная версия SortedBag
+            
+            // Разберем текст на слова
+            String INPUT_TEXT = "Hello World! Hello All! Hi World!";
+            // Создаем Multiset
+            Bag bag = SynchronizedSortedBag.synchronizedBag(new TreeBag(Arrays.asList(INPUT_TEXT.split(" "))));
+
+            // Выводим кол-вом вхождений слов
+            System.out.println(bag); // напечатает [1:All!,2:Hello,1:Hi,2:World!]- в алфавитном порядке
+            // Выводим все уникальные слова
+            System.out.println(bag.uniqueSet()); // напечатает [All!, Hello, Hi, World!]- в алфавитном порядке
+
+
+            // Выводим количество по каждому слову
+            System.out.println("Hello = " + bag.getCount("Hello")); // напечатает 2
+            System.out.println("World = " + bag.getCount("World!")); // напечатает 2
+            System.out.println("All = " + bag.getCount("All!")); // напечатает 1
+            System.out.println("Hi = " + bag.getCount("Hi")); // напечатает 1
+            System.out.println("Empty = " + bag.getCount("Empty")); // напечатает 0
+
+            // Выводим общее количества всех слов в тексте
+            System.out.println(bag.size()); // напечатает 6
+
+            // Выводим общее количество всех уникальных слов
+            System.out.println(bag.uniqueSet().size()); // напечатает 4
+            
+        </spoiler>
+        3. разных вариантов Bag от GS Collections:
+        <spoiler title="Использование MutableBag из GS Collections">
+            Обратите внимание, что порядок вывода в System.out.println(bag) и в System.out.println(bag.toSet()) - не
+            определен
+            
+            // Разберем текст на слова
+            String INPUT_TEXT = "Hello World! Hello All! Hi World!";
+            // Создаем Multiset
+            MutableBag bag = HashBag.newBag(Arrays.asList(INPUT_TEXT.split(" ")));
+
+                // Выводим кол-вом вхождений слов
+                System.out.println(bag); // напечатает [Hi, World!, World!, Hello, Hello, All!]- в произвольном порядке
+                // Выводим все уникальные слова
+                System.out.println(bag.toSet()); // напечатает [Hi, Hello, World!, All!] - в произвольном порядке
+
+                // Выводим количество по каждому слову
+                System.out.println("Hello = " + bag.occurrencesOf("Hello")); // напечатает 2
+                System.out.println("World = " + bag.occurrencesOf("World!")); // напечатает 2
+                System.out.println("All = " + bag.occurrencesOf("All!")); // напечатает 1
+                System.out.println("Hi = " + bag.occurrencesOf("Hi")); // напечатает 1
+                System.out.println("Empty = " + bag.occurrencesOf("Empty")); // напечатает 0
+
+                // Выводим общее количества всех слов в тексте
+                System.out.println(bag.size()); //напечатает 6
+
+                // Выводим общее количество всех уникальных слов
+                System.out.println(bag.toSet().size()); //напечатает 4
+                
+        </spoiler>
+        <spoiler title="Использование MutableSortedBag из GS Collections">
+            Обратите внимание, что порядок вывода в System.out.println(bag) и в System.out.println(bag.toSortedSet()) -
+            будет натуральным, т.е. по алфавиту в данном случае
+            
+            // Разберем текст на слова
+            String INPUT_TEXT = "Hello World! Hello All! Hi World!";
+            // Создаем Multiset
+            MutableSortedBag bag = TreeBag.newBag(Arrays.asList(INPUT_TEXT.split(" ")));
+
+                // Выводим кол-вом вхождений слов
+                System.out.println(bag); // напечатает [All!, Hello, Hello, Hi, World!, World!]- в натуральном порядке
+                // Выводим все уникальные слова
+                System.out.println(bag.toSortedSet()); // напечатает [All!, Hello, Hi, World!]- в натуральном порядке
+
+                // Выводим количество по каждому слову
+                System.out.println("Hello = " + bag.occurrencesOf("Hello")); // напечатает 2
+                System.out.println("World = " + bag.occurrencesOf("World!")); // напечатает 2
+                System.out.println("All = " + bag.occurrencesOf("All!")); // напечатает 1
+                System.out.println("Hi = " + bag.occurrencesOf("Hi")); // напечатает 1
+                System.out.println("Empty = " + bag.occurrencesOf("Empty")); // напечатает 0
+
+                // Выводим общее количества всех слов в тексте
+                System.out.println(bag.size()); //напечатает 6
+
+                // Выводим общее количество всех уникальных слов
+                System.out.println(bag.toSet().size()); //напечатает 4
+                
+        </spoiler>
+        
+4. Ну и наконец, посмотрим как можно сделать тоже самое в чистом JDK с помощью эмуляции multiSet через HashMap
+"Эмуляция multiSet через HashMap
+Как вы легко можете заметить, кода потребовалось, естественно, больше чем у любых реализаций multiSet или Bag.
+            
+            // Разберем текст на слова
+            String INPUT_TEXT = "Hello World! Hello All! Hi World!";
+            List listResult = Arrays.asList(INPUT_TEXT.split(" "));
+                // Создаем эмуляцию Multiset c помощью HashMap и заполняем
+                Map<String, Integer> fakeMultiset = new HashMap<String,Integer>(listResult.size());
+
+                for(String word: listResult) {
+                Integer cnt = fakeMultiset.get(word);
+                fakeMultiset.put(word, cnt == null ? 1 : cnt + 1);
+                }
+
+                // Выводим кол-вом вхождений слов
+                System.out.println(fakeMultiset); // напечатает {World!=2, Hi=1, Hello=2, All!=1}- в произвольном
+                порядке
+                // Выводим все уникальные слова
+                System.out.println(fakeMultiset.keySet()); // напечатает [World!, Hi, Hello, All!] - в произвольном
+                порядке
+
+                // Выводим количество по каждому слову
+                System.out.println("Hello = " + fakeMultiset.get("Hello")); // напечатает 2
+                System.out.println("World = " + fakeMultiset.get("World!")); // напечатает 2
+                System.out.println("All = " + fakeMultiset.get("All!")); // напечатает 1
+                System.out.println("Hi = " + fakeMultiset.get("Hi")); // напечатает 1
+                System.out.println("Empty = " + fakeMultiset.get("Empty")); // напечатает null
+
+                // Выводим общее количества всех слов в тексте
+                Integer cnt = 0;
+                for (Integer wordCount : fakeMultiset.values()){
+                cnt += wordCount;
+                }
+                System.out.println(cnt); //напечатает 6
+
+                // Выводим общее количество уникальных слов
+                System.out.println(fakeMultiset.size()); //напечатает 4
+                
+        </spoiler>
 
 ### **4.2 Реализация Multimap в библиотеках guava, Apache Commons Collections и GS Collections**
 
