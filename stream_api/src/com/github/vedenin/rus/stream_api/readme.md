@@ -253,40 +253,40 @@ Java Stream API предлагает два вида методов:
 
 Как видно из кода выше, для реализации своего Collector'a нужно определить три или четыре метода (метод_последней_обработки_аккумулятора не обязателен). Рассмотрим следующий кода, который мы писали до Java 8, чтобы объединить все строки коллекции: 
 
-     StringBuilder b = new StringBuilder(); // метод_инициализации_аккумулятора 
-     for(String s: strings) { 
-         b.append(s).append(" , "); // метод_обработки_каждого_элемента, 
-     } 
-     String joinBuilderOld = b.toString(); // метод_последней_обработки_аккумулятора 
+   StringBuilder b = new StringBuilder(); // метод_инициализации_аккумулятора 
+   for(String s: strings) { 
+      b.append(s).append(" , "); // метод_обработки_каждого_элемента, 
+   } 
+   String joinBuilderOld = b.toString(); // метод_последней_обработки_аккумулятора 
      
 И аналогичный код, который будет написан в Java 8  
 
      
-     String joinBuilder = strings.stream().collect( Collector.of( StringBuilder::new, // метод_инициализации_аккумулятора 
-     (b ,s) -> b.append(s).append(" , "), // метод_обработки_каждого_элемента, 
-     (b1, b2) -> b1.append(b2).append(" , "), // метод_соединения_двух_аккумуляторов 
-     StringBuilder::toString // метод_последней_обработки_аккумулятора ) ); 
+    String joinBuilder = strings.stream().collect( Collector.of( StringBuilder::new, // метод_инициализации_аккумулятора 
+    (b ,s) -> b.append(s).append(" , "), // метод_обработки_каждого_элемента, 
+    (b1, b2) -> b1.append(b2).append(" , "), // метод_соединения_двух_аккумуляторов 
+    StringBuilder::toString // метод_последней_обработки_аккумулятора ) ); 
 
 В общем-то, три метода легко понять из кода выше, их мы писали практически при каждой обработки коллекций, но вот что такое метод_соединения_двух_аккумуляторов? Это метод который нужен для параллельной обработки Collector'a, в данном случае при параллельном стриме коллекция может быть разделенной на две части (или больше частей), в каждой из которых будет свой аккумулятор StringBuilder и потом необходимо будет их объединить, то код до Java 8 при 2 потоках будет таким:  
 
-       StringBuilder b1 = new StringBuilder(); // метод_инициализации_аккумулятора_1 
-       for(String s: stringsPart1) { // stringsPart1 - первая часть коллекции 
-          strings b1.append(s).append(" , "); // метод_обработки_каждого_элемента, } 
-          StringBuilder b2 = new StringBuilder(); // метод_инициализации_аккумулятора_2 
-          for(String s: stringsPart2) { // stringsPart2 - вторая часть коллекции 
-             strings b2.append(s).append(" , "); // метод_обработки_каждого_элемента, 
-          } 
-          StringBuilder b = b1.append(b2).append(" , "), // метод_соединения_двух_аккумуляторов 
-          String joinBuilderOld = b.toString(); // метод_последней_обработки_аккумулятора 
+    StringBuilder b1 = new StringBuilder(); // метод_инициализации_аккумулятора_1 
+    for(String s: stringsPart1) { // stringsPart1 - первая часть коллекции 
+       strings b1.append(s).append(" , "); // метод_обработки_каждого_элемента, } 
+       StringBuilder b2 = new StringBuilder(); // метод_инициализации_аккумулятора_2 
+       for(String s: stringsPart2) { // stringsPart2 - вторая часть коллекции 
+          strings b2.append(s).append(" , "); // метод_обработки_каждого_элемента, 
+       } 
+       StringBuilder b = b1.append(b2).append(" , "), // метод_соединения_двух_аккумуляторов 
+       String joinBuilderOld = b.toString(); // метод_последней_обработки_аккумулятора 
 
 Напишем свой аналог
 
-       Collectors.toList() для работы со строковым стримом:  // Напишем свой аналог toList 
-       Collector<string, list<string="">, List> toList = Collector.of( ArrayList::new, // метод инициализации аккумулятора 
-       List::add, // метод обработки каждого элемента 
-       (l1, l2) -> { l1.addAll(l2); return l1; } // метод соединения двух аккумуляторов при параллельном выполнении );
-       // Используем его для получение списка строк без дубликатов из стрима 
-       List distinct1 = strings.stream().distinct().collect(toList); 
+    Collectors.toList() для работы со строковым стримом:  // Напишем свой аналог toList 
+    Collector<string, list<string="">, List> toList = Collector.of( ArrayList::new, // метод инициализации аккумулятора 
+    List::add, // метод обработки каждого элемента 
+    (l1, l2) -> { l1.addAll(l2); return l1; } // метод соединения двух аккумуляторов при параллельном выполнении );
+    // Используем его для получение списка строк без дубликатов из стрима 
+    List distinct1 = strings.stream().distinct().collect(toList); 
 
 Так же примеры можно найти на [github'e](https://github.com/Vedenin/java_in_examples/blob/master/stream_api/src/com/github/vedenin/rus/stream_api/CollectAndToArrayTests.java)
 
