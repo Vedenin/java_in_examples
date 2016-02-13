@@ -33,53 +33,9 @@
 | Тип | Однопоточные | Многопоточные |
 | -------------	 | 	-------------|-------------|
 | Lists |*   ArrayList - основной список, основан на массиве<br>*   LinkedList - полезен лишь в некоторых редких случаях<br>*   Vector - устарел| *   CopyOnWriteArrayList - редкие обновления, частые чтения|
-| Queues / Deques | 
-
-*   ArrayDeque - основная реализация, основан на массиве
-*   Stack - устарел
-*   PriorityQueue - отсортированная очередь
-
- | 
-
-*   ArrayBlockingQueue - блокирующая очередь
-*   ConcurrentLinkedDeque / ConcurrentLinkedQueue - очередь на связанных нодах
-*   DelayQueue - очередь с задержкой для каждого элемента
-*   LinkedBlockingDeque / LinkedBlockingQueue - блокирующая очередь на связанных нодах
-*   LinkedTransferQueue - может служить для передачи элементов
-*   PriorityBlockingQueue - многопоточная PriorityQueue
-*   SynchronousQueue - простая многопоточная очередь
-
- |
-| Maps | 
-
-*   HashMap - основная реализация
-*   EnumMap - enum в качестве ключей
-*   Hashtable - устарел
-*   IdentityHashMap - ключи сравниваются с помощью ==
-*   LinkedHashMap - сохраняет порядок вставки
-*   TreeMap - сортированные ключи
-*   WeakHashMap - слабые ссылки, полезно для кешей
-
- | 
-
-*   ConcurrentHashMap - основная многопоточная реализация
-*   ConcurrentSkipListMap - отсортированная многопоточная реализация
-
- |
-| Sets | 
-
-*   HashSet - основная реализация множества
-*   EnumSet - множество из enums
-*   BitSet* - множество битов
-*   LinkedHashSet - сохраняет порядок вставки
-*   TreeSet - отсортированные set
-
- | 
-
-*   ConcurrentSkipListSet - отсортированный многопоточный set
-*   CopyOnWriteArraySet - редкие обновления, частые чтения
-
- |
+| Queues / Deques | *   ArrayDeque - основная реализация, основан на массиве<br>*   Stack - устарел<br>*   PriorityQueue - отсортированная очередь| *   ArrayBlockingQueue - блокирующая очередь<br>*   ConcurrentLinkedDeque / ConcurrentLinkedQueue - очередь на связанных нодах<br>*   DelayQueue - очередь с задержкой для каждого элемента<br>*   LinkedBlockingDeque / LinkedBlockingQueue - блокирующая очередь на связанных нодах<br><br>*   LinkedTransferQueue - может служить для передачи элементов<br>*   PriorityBlockingQueue - многопоточная PriorityQueue<br>*   SynchronousQueue - простая многопоточная очередь|
+| Maps | *   HashMap - основная реализация<br>*   EnumMap - enum в качестве ключей<br>*   Hashtable - устарел<br>*   IdentityHashMap - ключи сравниваются с помощью ==<br>*   LinkedHashMap - сохраняет порядок вставки<br>*   TreeMap - сортированные ключи<br>*   WeakHashMap - слабые ссылки, полезно для кешей| *   ConcurrentHashMap - основная многопоточная реализация<br>*   ConcurrentSkipListMap - отсортированная многопоточная реализация|
+| Sets | *   HashSet - основная реализация множества<br>*   EnumSet - множество из enums<br>*   BitSet* - множество битов<br>*   LinkedHashSet - сохраняет порядок вставки<br>*   TreeSet - отсортированные set| *   ConcurrentSkipListSet - отсортированный многопоточный set<br>*   CopyOnWriteArraySet - редкие обновления, частые чтения|
 
 * - на самом деле, BitSet хоть и называется Set'ом, интерфейс Set не наследует. 3) Устаревшие коллекции в JDK Универсальные коллекции общего назначения, которые признаны устаревшими (legacy)
 
