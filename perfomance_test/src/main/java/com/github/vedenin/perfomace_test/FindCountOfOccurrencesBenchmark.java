@@ -1,4 +1,4 @@
-package org.sample;
+package com.github.vedenin.perfomace_test;
 
 import org.apache.commons.lang.StringUtils;
 import org.openjdk.jmh.annotations.*;
