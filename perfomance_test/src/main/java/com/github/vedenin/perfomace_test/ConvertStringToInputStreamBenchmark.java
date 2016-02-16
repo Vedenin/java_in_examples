@@ -29,26 +29,26 @@ public class ConvertStringToInputStreamBenchmark {
 
     /*             1. Using ToInputStream of Apache Utils */
     @Benchmark
-    public void apacheToInputStream() throws IOException {
-        InputStream apacheToInputStream = IOUtils.toInputStream(test1, StandardCharsets.UTF_8);
+    public InputStream apacheToInputStream() throws IOException {
+        return IOUtils.toInputStream(test1, StandardCharsets.UTF_8);
     }
 
     /*             2. Using JDK */
     @Benchmark
-    public void jdkByteArrayInputStream() throws IOException {
-        InputStream jdkByteArrayInputStream = new ByteArrayInputStream(test1.getBytes(StandardCharsets.UTF_8));
+    public InputStream jdkByteArrayInputStream() throws IOException {
+        return new ByteArrayInputStream(test1.getBytes(StandardCharsets.UTF_8));
     }
 
     /*             3. Using ReaderInputStream of Apache Utils */
     @Benchmark
-    public void apacheReaderInputStream() throws IOException {
-        InputStream apacheReaderInputStream = new ReaderInputStream(CharSource.wrap(test1).openStream());
+    public InputStream apacheReaderInputStream() throws IOException {
+        return new ReaderInputStream(CharSource.wrap(test1).openStream());
     }
 
     /*             4. Using Apache Utils and InputStreamReader*/
     @Benchmark
-    public void apacheInputStreamReader() throws IOException {
-        InputStream apacheInputStreamReader = IOUtils.toInputStream(test1);
+    public InputStream apacheInputStreamReader() throws IOException {
+        return IOUtils.toInputStream(test1);
     }
 
     public static void main(String[] args) throws RunnerException {
