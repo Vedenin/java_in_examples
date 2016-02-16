@@ -8,18 +8,13 @@ import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
  * Created by vvedenin on 2/15/2016.
- *
- *
  */
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
@@ -28,8 +23,8 @@ import java.util.stream.Collectors;
 @Fork(1)
 @State(Scope.Benchmark)
 public class ConvertInputStreamToStringBenchmark {
-    private final static  String test1 = "test184768612876481276487612876417826487216478216784621784672816478216784621784621786478216478216784261784621782178647281647821647821697421687126784621874621786478216478216874";
-    private final static  InputStream inputStream = IOUtils.toInputStream(test1, StandardCharsets.UTF_8);
+    private final static String test1 = "test184768612876481276487612876417826487216478216784621784672816478216784621784621786478216478216784261784621782178647281647821647821697421687126784621874621786478216478216874";
+    private final static InputStream inputStream = IOUtils.toInputStream(test1, StandardCharsets.UTF_8);
 
     /*             1. Using ToInputStream of Apache Utils */
     @Benchmark
@@ -88,6 +83,38 @@ public class ConvertInputStreamToStringBenchmark {
         return result;
     }
 
+    /*             7. Using InputStreamReader manually */
+    @Benchmark
+    public String manually(final InputStream is, final int bufferSize) throws IOException {
+        inputStream.mark(0);
+        final char[] buffer = new char[bufferSize];
+        final StringBuilder out = new StringBuilder();
+        Reader in = new InputStreamReader(inputStream, "UTF-8");
+        for (; ; ) {
+            int rsz = in.read(buffer, 0, buffer.length);
+            if (rsz < 0)
+                break;
+            out.append(buffer, 0, rsz);
+        }
+        inputStream.reset();
+        return out.toString();
+    }
+
+    /*             8. Using InputStreamReader manually 2 */
+    @Benchmark
+    public String manually2(final InputStream is, final int bufferSize) throws IOException {
+        inputStream.mark(0);
+        StringBuilder sb = new StringBuilder();
+        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+        String read;
+
+        while ((read = br.readLine()) != null) {
+            //System.out.println(read);
+            sb.append(read);
+        }
+        inputStream.reset();
+        return sb.toString();
+    }
 
     public static void main(String[] args) throws Exception {
         ConvertInputStreamToStringBenchmark test = new ConvertInputStreamToStringBenchmark();
