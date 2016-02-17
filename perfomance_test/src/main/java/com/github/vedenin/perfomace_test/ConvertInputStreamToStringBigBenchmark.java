@@ -127,7 +127,7 @@ public class ConvertInputStreamToStringBigBenchmark {
         StringBuilder result = new StringBuilder();
         String line; boolean flag = false;
         while ((line = reader.readLine()) != null) {
-            result.append(line).append(flag? newLine: "");
+            result.append(flag? newLine: "").append(line);
             flag = true;
         }
         reset();
