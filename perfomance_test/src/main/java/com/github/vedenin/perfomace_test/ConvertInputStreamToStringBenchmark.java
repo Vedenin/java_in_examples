@@ -29,7 +29,7 @@ public class ConvertInputStreamToStringBenchmark {
 
     /*             1. Using IOUtils.toString (Apache Utils) */
     @Benchmark
-    public String apacheToInputStream() throws IOException {
+    public String test1_apacheToInputStream() throws IOException {
         mark();
         String result = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
         reset();
@@ -38,7 +38,7 @@ public class ConvertInputStreamToStringBenchmark {
 
     /*             2. Using CharStreams (guava) */
     @Benchmark
-    public String guavaCharStreams() throws IOException {
+    public String test2_guavaCharStreams() throws IOException {
         mark();
         String result = CharStreams.toString(new InputStreamReader(inputStream, Charsets.UTF_8));
         inputStream.reset();
@@ -47,7 +47,7 @@ public class ConvertInputStreamToStringBenchmark {
 
     /*             3. Using Scanner (JDK) */
     @Benchmark
-    public String jdkScanner() throws IOException {
+    public String test3_jdkScanner() throws IOException {
         mark();
         Scanner s = new Scanner(inputStream).useDelimiter("\\A");
         String result = s.hasNext() ? s.next() : "";
@@ -57,7 +57,7 @@ public class ConvertInputStreamToStringBenchmark {
 
     /*             4. Using Stream Api (Java 8) */
     @Benchmark
-    public String jdkJava8() throws IOException {
+    public String test4_jdkJava8() throws IOException {
         mark();
         String result = new BufferedReader(new InputStreamReader(inputStream)).lines().collect(Collectors.joining("\n"));
         reset();
@@ -66,7 +66,7 @@ public class ConvertInputStreamToStringBenchmark {
 
     /*             5. Using parallel Stream Api (Java 8) */
     @Benchmark
-    public String jdkJava8parallel() throws IOException {
+    public String test5_jdkJava8parallel() throws IOException {
         mark();
         String result = new BufferedReader(new InputStreamReader(inputStream)).lines().parallel().collect(Collectors.joining("\n"));
         reset();
@@ -75,7 +75,7 @@ public class ConvertInputStreamToStringBenchmark {
 
     /*             6. Using InputStreamReader and StringBuilder (JDK) */
     @Benchmark
-    public String inputStreamReaderAndStringBuilder() throws IOException {
+    public String test6_inputStreamReaderAndStringBuilder() throws IOException {
         mark();
         final int bufferSize = 1024;
         final char[] buffer = new char[bufferSize];
@@ -93,7 +93,7 @@ public class ConvertInputStreamToStringBenchmark {
 
     /*             7. Using StringWriter and IOUtils.copy (Apache Commons)*/
     @Benchmark
-    public String apacheStringWriterAndIOUtilsCopy() throws IOException {
+    public String test7_apacheStringWriterAndIOUtilsCopy() throws IOException {
         mark();
         StringWriter writer = new StringWriter();
         IOUtils.copy(inputStream, writer, "UTF-8");
@@ -103,7 +103,7 @@ public class ConvertInputStreamToStringBenchmark {
 
     /*            8. Using ByteArrayOutputStream and inputStream.read (JDK)  */
     @Benchmark
-    public String readByteArrayOutputStream() throws IOException {
+    public String test8_readByteArrayOutputStream() throws IOException {
         mark();
         ByteArrayOutputStream result = new ByteArrayOutputStream();
         byte[] buffer = new byte[1024];
@@ -117,7 +117,7 @@ public class ConvertInputStreamToStringBenchmark {
 
     /*            9. Using BufferedReader (JDK) */
     @Benchmark
-    public String bufferedReaderReadLine() throws IOException {
+    public String test9_bufferedReaderReadLine() throws IOException {
         mark();
         String newLine = System.getProperty("line.separator");
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -133,7 +133,7 @@ public class ConvertInputStreamToStringBenchmark {
 
     /*            10. Using BufferedInputStream and ByteArrayOutputStream (JDK) */
     @Benchmark
-    public String bufferedInputStreamAndByteArrayOutputStream() throws IOException {
+    public String test10_bufferedInputStreamAndByteArrayOutputStream() throws IOException {
         mark();
         BufferedInputStream bis = new BufferedInputStream(inputStream);
         ByteArrayOutputStream buf = new ByteArrayOutputStream();
@@ -148,7 +148,7 @@ public class ConvertInputStreamToStringBenchmark {
 
     /*            11. Using inputStream.read() and StringBuilder  (JDK) */
     @Benchmark
-    public String inputStreamReadAndStringBuilder() throws IOException {
+    public String test11_inputStreamReadAndStringBuilder() throws IOException {
         mark();
         int ch;
         StringBuilder sb = new StringBuilder();
@@ -169,17 +169,17 @@ public class ConvertInputStreamToStringBenchmark {
     public static void main(String[] args) throws Exception {
         ConvertInputStreamToStringBenchmark test = new ConvertInputStreamToStringBenchmark();
         System.out.println();
-        System.out.println("1. apacheToInputStream : " + test.apacheToInputStream());
-        System.out.println("2. guavaCharStreams : " + test.guavaCharStreams());
-        System.out.println("3. jdkScanner : " + test.jdkScanner());
-        System.out.println("4. jdkJava8 : " + test.jdkJava8());
-        System.out.println("5. jdkJava8parallel : " + test.jdkJava8parallel());
-        System.out.println("6. inputStreamReaderAndStringBuilder : " + test.inputStreamReaderAndStringBuilder());
-        System.out.println("7. apacheStringWriterAndIOUtilsCopy : " + test.apacheStringWriterAndIOUtilsCopy());
-        System.out.println("8. readByteArrayOutputStream : " + test.readByteArrayOutputStream());
-        System.out.println("9. bufferedReaderReadLine : " + test.bufferedReaderReadLine());
-        System.out.println("10. bufferedInputStreamAndByteArrayOutputStream : " + test.bufferedInputStreamAndByteArrayOutputStream());
-        System.out.println("11. inputStreamReadAndStringBuilder : " + test.inputStreamReadAndStringBuilder());
+        System.out.println("1. apacheToInputStream : " + test.test1_apacheToInputStream().length());
+        System.out.println("2. guavaCharStreams : " + test.test2_guavaCharStreams().length());
+        System.out.println("3. jdkScanner : " + test.test3_jdkScanner().length());
+        System.out.println("4. jdkJava8 : " + test.test4_jdkJava8().length());
+        System.out.println("5. jdkJava8parallel : " + test.test5_jdkJava8parallel().length());
+        System.out.println("6. inputStreamReaderAndStringBuilder : " + test.test6_inputStreamReaderAndStringBuilder().length());
+        System.out.println("7. apacheStringWriterAndIOUtilsCopy : " + test.test7_apacheStringWriterAndIOUtilsCopy().length());
+        System.out.println("8. readByteArrayOutputStream : " + test.test8_readByteArrayOutputStream().length());
+        System.out.println("9. bufferedReaderReadLine : " + test.test9_bufferedReaderReadLine().length());
+        System.out.println("10. bufferedInputStreamAndByteArrayOutputStream : " + test.test10_bufferedInputStreamAndByteArrayOutputStream().length());
+        System.out.println("11. inputStreamReadAndStringBuilder : " + test.test11_inputStreamReadAndStringBuilder().length());
 
 
         System.out.println();
