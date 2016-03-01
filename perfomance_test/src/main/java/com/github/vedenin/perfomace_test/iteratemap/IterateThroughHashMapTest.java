@@ -21,9 +21,13 @@ import java.util.concurrent.TimeUnit;
  * Created by vvedenin on 2/21/2016.
  */
 @State(Scope.Benchmark)
-public class IterateThroughHashMap2100 {
-    private final static Integer SIZE = 2100;
-    private final Map<Integer, Integer> map = new HashMap<>(SIZE);
+public class IterateThroughHashMapTest {
+    private final static Integer SIZE = 100;
+
+    @Param({"100","1000"})
+    public int size;
+
+    private Map<Integer, Integer> map = new HashMap<>(SIZE);
 
     /** 1. Using iterator and Map.Entry **/
     @Benchmark
@@ -105,7 +109,7 @@ public class IterateThroughHashMap2100 {
     }
 
     /** 9. Using Apache IterableMap **/
-    private final IterableMap<Integer, Integer> iterableMap = new HashedMap<>(SIZE);
+    private IterableMap<Integer, Integer> iterableMap = new HashedMap<>(SIZE);
     @Benchmark
     public long test9_UsingApacheIterableMap() throws IOException {
         long i = 0;
@@ -117,7 +121,7 @@ public class IterateThroughHashMap2100 {
     }
 
     /** 10. Using MutableMap of Eclipse (CS) collections **/
-    private final MutableMap<Integer, Integer> mutableMap = UnifiedMap.newMap(SIZE);
+    private MutableMap<Integer, Integer> mutableMap = UnifiedMap.newMap(SIZE);
     @Benchmark
     public long test10_UsingEclipseMap() throws IOException {
         final long[] i = {0};
@@ -129,7 +133,10 @@ public class IterateThroughHashMap2100 {
 
     @TearDown(Level.Iteration)
     public void tearDown() {
-        for (int i = 0; i < SIZE; i++) {
+        map = new HashMap<>(size);
+        iterableMap = new HashedMap<>(size);
+        mutableMap = UnifiedMap.newMap(size);
+        for (int i = 0; i < size; i++) {
             map.put(i, i);
             mutableMap.put(i, i);
             iterableMap.put(i, i);
@@ -138,10 +145,11 @@ public class IterateThroughHashMap2100 {
 
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder()
-                .include(IterateThroughHashMap2100.class.getSimpleName())
+                .include(IterateThroughHashMapTest.class.getSimpleName())
                 .timeUnit(TimeUnit.MICROSECONDS)
-                .warmupIterations(3)
-                .measurementIterations(10)
+                .warmupIterations(10)
+                .measurementIterations(100)
+                .param("size","100")
                 .forks(1)
                 .mode(Mode.AverageTime)
                 .build();
