@@ -149,7 +149,7 @@ public class IterateThroughHashMapTest {
                 .timeUnit(TimeUnit.MICROSECONDS)
                 .warmupIterations(10)
                 .measurementIterations(100)
-                .param("size","100")
+                .param("size","100","500","900","1300","1700","2100","2500","5000","10000","15000","20000","25000","30000")
                 .forks(1)
                 .mode(Mode.AverageTime)
                 .build();
