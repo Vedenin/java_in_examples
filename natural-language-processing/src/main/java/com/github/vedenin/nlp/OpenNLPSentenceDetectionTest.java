@@ -14,35 +14,24 @@ import java.util.Arrays;
  * Created by vedenin on 04.02.16.
  */
 public class OpenNLPSentenceDetectionTest {
-    public static void main(String[] strings) throws FileNotFoundException {
-        String text = "“But I don’t want to go among mad people,” Alice remarked.\n" +
-                "“Oh, you can’t help that,” said the Cat: “we’re all mad here. I’m mad. You’re mad.”\n" +
-                "“How do you know I’m mad?” said Alice.\n" +
+
+    public static final String NATURAL_LANGUAGE_PROCESSING_SRC_MAIN_RESOURCES_EN_SENT_BIN = "natural-language-processing/src/main/resources/en-sent.bin";
+
+    public static void main(String[] strings) throws Exception {
+        String text = "“But I don’t want to go among mad people,” Alice remarked. " +
+                "“Oh, you can’t help that,” said the Cat: “we’re all mad here. I’m mad. You’re mad.” " +
+                "“How do you know I’m mad?” said Alice. " +
                 "“You must be,” said the Cat, “or you wouldn’t have come here.”";
 
-        InputStream modelIn = new FileInputStream("natural-language-processing/src/main/resources/en-sent.bin");
-
-        try {
+        try (InputStream modelIn = new FileInputStream(NATURAL_LANGUAGE_PROCESSING_SRC_MAIN_RESOURCES_EN_SENT_BIN)) {
             SentenceModel model = new SentenceModel(modelIn);
             SentenceDetectorME sentenceDetector = new SentenceDetectorME(model);
             String sentences[] = sentenceDetector.sentDetect(text);
             Span sentences2[] = sentenceDetector.sentPosDetect(text);
-            for(String sentence: sentences) {
+            for (String sentence : sentences) {
                 System.out.println(sentence);
             }
             System.out.println(Arrays.deepToString(sentences2));
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        finally {
-            if (modelIn != null) {
-                try {
-                    modelIn.close();
-                }
-                catch (IOException e) {
-                }
-            }
         }
     }
 }
