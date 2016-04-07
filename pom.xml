@@ -74,5 +74,6 @@
         <module>other</module>
         <module>web</module>
         <module>spring</module>
+        <module>machine-learning</module>
     </modules>
 </project>
