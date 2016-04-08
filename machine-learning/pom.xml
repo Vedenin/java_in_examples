@@ -5,9 +5,9 @@
     <packaging>pom</packaging>
 
     <groupId>com.github.vedenin</groupId>
-    <artifactId>java-in-examples</artifactId>
+    <artifactId>machine-learning</artifactId>
     <version>0.01</version>
-    <name>Java In Examples :: Main</name>
+    <name>Java In Examples :: Machine Learning</name>
 
     <build>
         <plugins>
@@ -25,6 +25,21 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.airbnb.aerosolve</groupId>
+            <artifactId>core</artifactId>
+            <version>0.1.45</version>
+        </dependency>
+        <dependency>
+            <groupId>com.airbnb.aerosolve</groupId>
+            <artifactId>training</artifactId>
+            <version>0.1.45</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.haifengl</groupId>
+            <artifactId>smile-core</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>18.0</version>
@@ -40,40 +55,14 @@
             <version>2.4</version>
         </dependency>
         <dependency>
-            <groupId>com.goldmansachs</groupId>
-            <artifactId>gs-collections-api</artifactId>
-            <version>6.2.0</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.0</version>
         </dependency>
-
         <dependency>
-            <groupId>com.goldmansachs</groupId>
-            <artifactId>gs-collections</artifactId>
-            <version>6.2.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.goldmansachs</groupId>
-            <artifactId>gs-collections-testutils</artifactId>
-            <version>6.2.0</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.goldmansachs</groupId>
-            <artifactId>gs-collections-forkjoin</artifactId>
-            <version>6.2.0</version>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
         </dependency>
     </dependencies>
-
-    <modules>
-        <module>html_parser</module>
-        <module>stream_api</module>
-        <module>collections</module>
-        <module>dependency_injection</module>
-        <module>natural-language-processing</module>
-        <module>other</module>
-        <module>web</module>
-        <module>spring</module>
-        <module>machine-learning</module>
-    </modules>
 </project>
