@@ -321,4 +321,4 @@ Java Stream API предлагает два вида методов:
 
 2.  [Processing Data with Java SE 8 Streams, Part 2](http://www.oracle.com/technetwork/articles/java/architect-streams-pt2-2227132.html) от Oracle, 
 
-3.  [Полное руководство по Java 8 Stream](http://prologistic.com.ua/polnoe-rukovodstvo-po-java-8-stream.html)</string,></stringbuilder></stringbuilder>
+3.  [Полное руководство по Java 8 Stream](http://prologistic.com.ua/polnoe-rukovodstvo-po-java-8-stream.html)
