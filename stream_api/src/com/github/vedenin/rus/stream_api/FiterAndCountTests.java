@@ -33,33 +33,33 @@ public class FiterAndCountTests {
         // ************ Работа со сложными объектами
 
         // Зададим коллекцию людей
-        Collection<People> peoples = Arrays.asList(
+        Collection<People> people = Arrays.asList(
                 new People("Вася", 16, Sex.MAN),
                 new People("Петя", 23, Sex.MAN),
-                new People("Елена", 42, Sex.WOMEN),
+                new People("Елена", 42, Sex.WOMAN),
                 new People("Иван Иванович", 69, Sex.MAN)
         );
 
         // Выбрать мужчин-военообязанных
-        List<People> militaryService = peoples.stream().filter((p)-> p.getAge() >= 18 && p.getAge() < 27
+        List<People> militaryService = people.stream().filter((p)-> p.getAge() >= 18 && p.getAge() < 27
                 && p.getSex() == Sex.MAN).collect(Collectors.toList());
         System.out.println("militaryService = " + militaryService); // напечатает militaryService = [{name='Петя', age=23, sex=MAN}]
 
         // Найти средний возраст среди мужчин
-        double manAverageAge = peoples.stream().filter((p) -> p.getSex() == Sex.MAN).
+        double manAverageAge = people.stream().filter((p) -> p.getSex() == Sex.MAN).
                 mapToInt(People::getAge).average().getAsDouble();
         System.out.println("manAverageAge = " + manAverageAge); // напечатает manAverageAge = 36.0
 
         // Найти кол-во потенциально работоспосбных людей в выборке (т.е. от 18 лет и учитывая что женщины выходят в 55 лет, а мужчина в 60)
-        long peopleHowCanWork = peoples.stream().filter((p) -> p.getAge() >= 18).filter(
-                (p) -> (p.getSex() == Sex.WOMEN && p.getAge() < 55) || (p.getSex() == Sex.MAN && p.getAge() < 60)).count();
-        System.out.println("peopleHowCanWork = " + peopleHowCanWork); // напечатает manAverageAge = 2
+        long peopleWhoCanWork = people.stream().filter((p) -> p.getAge() >= 18).filter(
+                (p) -> (p.getSex() == Sex.WOMAN && p.getAge() < 55) || (p.getSex() == Sex.MAN && p.getAge() < 60)).count();
+        System.out.println("peopleWhoCanWork = " + peopleWhoCanWork); // напечатает peopleWhoCanWork = 2
 
     }
 
     private enum Sex {
         MAN,
-        WOMEN
+        WOMAN
     }
 
     private static class People {
